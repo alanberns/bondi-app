@@ -13,7 +13,7 @@ import HorariosCasaReg from './pages/registrados/HorariosCasaReg';
 const App = () => {
   return (
     <main className=''>
-      <Router>
+      <Router basename="/bondi-app">
         <Routes>
           <Route path="/" element={<Inicio />} />
           <Route path="/programados" element={<HorariosProgramados />} />
