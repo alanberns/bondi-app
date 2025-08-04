@@ -9,22 +9,25 @@ export default function HorariosCasaReg() {
     const [desde, setDesde] = useState("00:00");
     const [hasta, setHasta] = useState("23:59");
     const [orden, setOrden] = useState("hora");
+    const [modoDia, setModoDia] = useState("");
 
     const navigate = useNavigate();
 
 
     useEffect(() => {
+        const nombreCSV = obtenerNombreCSV(modoDia);
+
         async function fetchHorarios() {
             try {
-                Papa.parse('csv/cementSAB.csv', {
+                Papa.parse(import.meta.env.BASE_URL + `csv/${nombreCSV}.csv`, {
                     download: true,
                     header: true,
                     complete: (result) => {
                       setHorarios(result.data);
+                      const nombresUnicos = [...new Set(result.data.map(h => h.Nombre))];
+                      setSeleccionados(nombresUnicos);
                     },
                   });
-                const nombresUnicos = [...new Set(horarios.map(h => h.nombre))];
-                setSeleccionados(nombresUnicos);
             } catch (error) {
                 console.error("Error al obtener los horarios:", error);
             } finally {
@@ -33,7 +36,17 @@ export default function HorariosCasaReg() {
         }
 
         fetchHorarios();
-    }, []);
+    }, [modoDia]);
+
+    const obtenerNombreCSV = (modoManual) => {
+      
+        const dia = new Date().getDay(); 
+        if (dia === 0 || modoManual == "domingo") return "cementDOM";
+        if (dia === 6 || modoManual == "sabado") return "cementSAB";
+        return "cement";
+      };
+      
+    
     const toggleNombre = (nombre) => {
         setSeleccionados((prev) =>
             prev.includes(nombre)
@@ -47,10 +60,10 @@ export default function HorariosCasaReg() {
     };
 
     const horariosFiltrados = horarios
-        .filter(h => seleccionados.includes(h.nombre) && dentroDelRango(h.hora))
+        .filter(h => seleccionados.includes(h.Nombre) && dentroDelRango(h.Hora))
         .sort((a, b) => {
-            if (orden === "hora") return a.hora.localeCompare(b.hora);
-            return a.nombre.localeCompare(b.nombre);
+            if (orden === "hora") return a.Hora.localeCompare(b.Hora);
+            return a.Nombre.localeCompare(b.Nombre);
         });
 
     if (loading) return <p>Cargando horarios...</p>;
@@ -74,6 +87,21 @@ export default function HorariosCasaReg() {
                         Inicio
                     </button>
                 </div>
+                
+                {/* 🔄 Selector de día */}
+                <div className="mb-6">
+                    <label className="block text-gray-700 font-semibold mb-2">Día:</label>
+                    <select
+                        value={modoDia}
+                        onChange={(e) => setModoDia(e.target.value)}
+                        className="w-full px-3 py-2 border rounded-lg shadow-sm"
+                    >
+                        <option value="habil">Lunes a Viernes</option>
+                        <option value="sabado">Sábado</option>
+                        <option value="domingo">Domingo / Feriado</option>
+                    </select>
+                </div>
+
                 
                 {/* 🕒 Filtros de hora y orden */}
                 <div className="mb-6 grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -112,7 +140,7 @@ export default function HorariosCasaReg() {
                 <div className="mb-6">
                     <h2 className="text-xl font-semibold text-gray-700 mb-2">Filtrar por ramal:</h2>
                     <div className="flex flex-wrap gap-4">
-                        {[...new Set(horarios.map(h => h.nombre))].map((nombre, i) => (
+                        {[...new Set(horarios.map(h => h.Nombre))].map((nombre, i) => (
                             <label key={i} className="flex items-center space-x-2 bg-white px-4 py-2 rounded-lg shadow border border-gray-300">
                                 <input
                                     type="checkbox"
@@ -133,7 +161,7 @@ export default function HorariosCasaReg() {
                 ) : (
                     <div className="grid grid-cols-1 gap-6">
                         {horariosFiltrados.map((item, index) => {
-                            const tipo = item.nombre.startsWith("[G]") ? "green" : "red";
+                            const tipo = item.Nombre.startsWith("[G]") ? "green" : "red";
                             const bordeColor = tipo === "green" ? "border-l-green-500" : "border-l-red-500";
 
                             return (
@@ -141,8 +169,8 @@ export default function HorariosCasaReg() {
                                     key={index}
                                     className={`bg-white p-6 rounded-xl shadow-md border-l-8 ${bordeColor} transition duration-300`}
                                 >
-                                    <p className="text-xl font-semibold text-gray-800 mb-2">{item.nombre}</p>
-                                    <p className="text-3xl font-bold text-gray-600">{item.hora}</p>
+                                    <p className="text-xl font-semibold text-gray-800 mb-2">{item.Nombre}</p>
+                                    <p className="text-3xl font-bold text-gray-600">{item.Hora}</p>
                                 </div>
                             );
                         })}

@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { FaChevronDown } from 'react-icons/fa';
 import Papa from 'papaparse';
 
-export default function HorariosLaPlata() {
+export default function HorariosPzaVEReg() {
   const [horarios, setHorarios] = useState([]);
   const [loading, setLoading] = useState(true);
   const [seleccionados, setSeleccionados] = useState([]);
@@ -52,9 +52,9 @@ export default function HorariosLaPlata() {
 
   const obtenerNombreCSV = (modoManual) => {
     const dia = new Date().getDay(); 
-    if (dia === 0 || modoManual == "domingo") return "psanmartinDOM";
-    if (dia === 6 || modoManual == "sabado") return "psanmartinSAB";
-    return "psanmartin";
+    if (dia === 0 || modoManual == "domingo") return "pzaveDOM";
+    if (dia === 6 || modoManual == "sabado") return "pzaveSAB";
+    return "pzave";
   };
 
   const dentroDelRango = (hora) => {

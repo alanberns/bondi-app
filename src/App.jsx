@@ -9,6 +9,8 @@ import HorariosRegistrados from './pages/registrados/HorariosRegistrados';
 import HorariosLaPlataReg from './pages/registrados/HorariosLaPlataReg';
 import HorariosLlegadaReg from './pages/registrados/HorariosLlegadaReg';
 import HorariosCasaReg from './pages/registrados/HorariosCasaReg';
+import HorariosPzaItaliaReg from './pages/registrados/HorariosPzaItaliaReg';
+import HorariosPzaVEReg from './pages/registrados/HorariosPzaVEReg';
 
 const App = () => {
   return (
@@ -24,6 +26,8 @@ const App = () => {
           <Route path="/registrados/casa" element={<HorariosCasaReg />} />
           <Route path="/registrados/laplata" element={<HorariosLaPlataReg />} />
           <Route path="/registrados/llegadaCasa" element={<HorariosLlegadaReg />} />
+          <Route path="/registrados/italia" element={<HorariosPzaItaliaReg />} />
+          <Route path="/registrados/plazave" element={<HorariosPzaVEReg />} />
         </Routes>
       </Router>
     </main>
