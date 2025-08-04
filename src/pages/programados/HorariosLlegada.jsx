@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
+import BotonesDescarga from "../../components/BotonesDesacarga";
 
 export default function HorariosLaPlata() {
   const [horarios, setHorarios] = useState([]);
@@ -125,26 +126,29 @@ export default function HorariosLaPlata() {
 
         {/* 🚌 Horarios filtrados */}
         {horariosFiltrados.length === 0 ? (
-          <div className="text-center text-gray-600 text-xl mt-12">
-            🚫 No hay horarios que coincidan con los filtros seleccionados.
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 gap-6">
-            {horariosFiltrados.map((item, index) => {
-              const tipo = item.nombre.startsWith("[G]") ? "green" : "red";
-              const bordeColor = tipo === "green" ? "border-l-green-500" : "border-l-red-500";
+            <div className="text-center text-gray-600 text-xl mt-12">
+              🚫 No hay horarios que coincidan con los filtros seleccionados.
+            </div>
+          ) : (
+            <>
+              <BotonesDescarga horarios={horariosFiltrados} nombre="Segui" />
+              <div className="grid grid-cols-1 gap-6">
+                {horariosFiltrados.map((item, index) => {
+                  const tipo = item.nombre.startsWith("[G]") ? "green" : "red";
+                  const bordeColor = tipo === "green" ? "border-l-green-500" : "border-l-red-500";
 
-              return (
-                <div
-                  key={index}
-                  className={`bg-white p-6 rounded-xl shadow-md border-l-8 ${bordeColor} transition duration-300`}
-                >
-                  <p className="text-xl font-semibold text-gray-800 mb-2">{item.nombre}</p>
-                  <p className="text-3xl font-bold text-gray-600">{item.hora}</p>
-                </div>
-              );
-            })}
-          </div>
+                  return (
+                    <div
+                      key={index}
+                      className={`bg-white p-6 rounded-xl shadow-md border-l-8 ${bordeColor} transition duration-300`}
+                    >
+                      <p className="text-xl font-semibold text-gray-800 mb-2">{item.nombre}</p>
+                      <p className="text-3xl font-bold text-gray-600">{item.hora}</p>
+                    </div>
+                  );
+                })}
+              </div>
+            </>
         )}
       </div>
     </div>

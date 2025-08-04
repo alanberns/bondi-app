@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import Papa from 'papaparse';
+import BotonesDescarga from "../../components/BotonesDesacarga";
 
-export default function HorariosLlegadaReg() {
+export default function  HorariosLlegadaReg() {
     const [horarios, setHorarios] = useState([]);
     const [loading, setLoading] = useState(true);
     const [seleccionados, setSeleccionados] = useState([]);
@@ -158,6 +159,8 @@ export default function HorariosLlegadaReg() {
                         🚫 No hay horarios que coincidan con los filtros seleccionados.
                     </div>
                 ) : (
+                    <>
+                    <BotonesDescarga horarios={horariosFiltrados} />
                     <div className="grid grid-cols-1 gap-6">
                         {horariosFiltrados.map((item, index) => {
                             const tipo = item.Nombre.startsWith("[G]") ? "green" : "red";
@@ -174,6 +177,7 @@ export default function HorariosLlegadaReg() {
                             );
                         })}
                     </div>
+                    </>
                 )}
 
             </div>

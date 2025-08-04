@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
+import BotonesDescarga from "../../components/BotonesDesacarga";
 
 export default function HorariosLaPlata() {
   const [horarios, setHorarios] = useState([]);
@@ -128,32 +129,35 @@ export default function HorariosLaPlata() {
             🚫 No hay horarios que coincidan con los filtros seleccionados.
           </div>
         ) : (
-          <div className="grid grid-cols-1 gap-6">
-            {horariosFiltrados.map((item, index) => {
+          <>
+            <BotonesDescarga horarios={horariosFiltrados} nombre="LaPlata" />
+            <div className="grid grid-cols-1 gap-6">
+              {horariosFiltrados.map((item, index) => {
                 const coloresPorTipo = {
-                    "[G]": "border-l-green-500",
-                    "[D]": "border-l-red-500",
-                    "[4]": "border-l-gray-800",
-                    "[HX28]": "border-l-gray-800",
-                    "[BG]": "border-l-gray-800",
-                    "[TOP]": "border-l-blue-500",
-                    "[418]": "border-l-blue-500",
-                    "[338]": "border-l-cyan-500",
-                  };
-                  const tipo = item.nombre.match(/^\[[^\]]+\]/)?.[0] || "default";
-                  const bordeColor = coloresPorTipo[tipo] || "border-l-white";
+                  "[G]": "border-l-green-500",
+                  "[D]": "border-l-red-500",
+                  "[4]": "border-l-gray-800",
+                  "[HX28]": "border-l-gray-800",
+                  "[BG]": "border-l-gray-800",
+                  "[TOP]": "border-l-blue-500",
+                  "[418]": "border-l-blue-500",
+                  "[338]": "border-l-cyan-500",
+                };
+                const tipo = item.nombre.match(/^\[[^\]]+\]/)?.[0] || "default";
+                const bordeColor = coloresPorTipo[tipo] || "border-l-white";
 
-              return (
-                <div
-                  key={index}
-                  className={`bg-white p-6 rounded-xl shadow-md border-l-8 ${bordeColor} transition duration-300`}
-                >
-                  <p className="text-xl font-semibold text-gray-800 mb-2">{item.nombre}</p>
-                  <p className="text-3xl font-bold text-gray-600">{item.hora}</p>
-                </div>
-              );
-            })}
-          </div>
+                return (
+                  <div
+                    key={index}
+                    className={`bg-white p-6 rounded-xl shadow-md border-l-8 ${bordeColor} transition duration-300`}
+                  >
+                    <p className="text-xl font-semibold text-gray-800 mb-2">{item.nombre}</p>
+                    <p className="text-3xl font-bold text-gray-600">{item.hora}</p>
+                  </div>
+                );
+              })}
+            </div>
+          </>
         )}
       </div>
     </div>

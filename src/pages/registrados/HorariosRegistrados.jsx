@@ -42,7 +42,7 @@ export default function HorariosProgramados() {
   return (
     <div className="min-h-screen bg-[#F5F5F5] flex flex-col items-center justify-center px-4">
       <h1 className="text-3xl font-bold text-gray-800 mb-8 text-center">
-        Horarios Programados
+        Horarios Registrados
       </h1>
       <div className="grid grid-cols-2 gap-6 w-full max-w-3xl">
         {botones.map(({ label, icon, path }, index) => (
