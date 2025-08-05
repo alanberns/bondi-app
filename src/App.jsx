@@ -11,6 +11,8 @@ import HorariosLlegadaReg from './pages/registrados/HorariosLlegadaReg';
 import HorariosCasaReg from './pages/registrados/HorariosCasaReg';
 import HorariosPzaItaliaReg from './pages/registrados/HorariosPzaItaliaReg';
 import HorariosPzaVEReg from './pages/registrados/HorariosPzaVEReg';
+import HorariosPzaVE from './pages/programados/HorariosPzaVE';
+import HorariosPzaItalia from './pages/programados/HorariosPzaItalia';
 
 const App = () => {
   return (
@@ -22,6 +24,8 @@ const App = () => {
           <Route path="/programados/casa" element={<HorariosCasa />} />
           <Route path="/programados/laplata" element={<HorariosLaPlata />} />
           <Route path="/programados/llegadaCasa" element={<HorariosLlegada />} />
+          <Route path="/programados/plazave" element={<HorariosPzaVE />} />
+          <Route path="/programados/italia" element={<HorariosPzaItalia />} />
           <Route path="/registrados" element={<HorariosRegistrados />} />
           <Route path="/registrados/casa" element={<HorariosCasaReg />} />
           <Route path="/registrados/laplata" element={<HorariosLaPlataReg />} />
