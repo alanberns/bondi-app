@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import { FaChevronDown } from 'react-icons/fa';
-import Papa from 'papaparse';
 import BotonesDescarga from "../../components/BotonesDesacarga";
 
 export default function HorariosPzaItaliaReg() {
@@ -11,21 +10,19 @@ export default function HorariosPzaItaliaReg() {
   const [desde, setDesde] = useState("00:00");
   const [hasta, setHasta] = useState("23:59");
   const [orden, setOrden] = useState("hora");   
-  const [modoDia, setModoDia] = useState("");
   const [mostrarFiltro, setMostrarFiltro] = useState(true);
 
   const navigate = useNavigate();
 
 
   useEffect(() => {
-    const nombreCSV = obtenerNombreCSV(modoDia);
 
     async function fetchHorarios() {
       try {
         const res = await fetch("https://back-api-bondi.vercel.app/api/pzaItalia");
         const data = await res.json();
         setHorarios(data);
-        const nombresUnicos = [...new Set(result.data.map(h => h.Nombre))];
+        const nombresUnicos = [...new Set(data.map(h => h.Nombre))];
         setSeleccionados(nombresUnicos);
       } catch (error) {
         console.error("Error al obtener los horarios:", error);
@@ -44,6 +41,8 @@ export default function HorariosPzaItaliaReg() {
         : [...prev, nombre]
     );
   };
+
+  const toggleFiltro = () => setMostrarFiltro(prev => !prev);
 
   const dentroDelRango = (hora) => {
     return hora >= desde && hora <= hasta;

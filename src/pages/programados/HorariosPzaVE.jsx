@@ -22,7 +22,7 @@ export default function HorariosPzaVEReg() {
         const res = await fetch("https://back-api-bondi.vercel.app/api/pzave");
         const data = await res.json();
         setHorarios(data);
-        const nombresUnicos = [...new Set(result.data.map(h => h.Nombre))];
+        const nombresUnicos = [...new Set(data.map(h => h.Nombre))];
         setSeleccionados(nombresUnicos);
       } catch (error) {
         console.error("Error al obtener los horarios:", error);
