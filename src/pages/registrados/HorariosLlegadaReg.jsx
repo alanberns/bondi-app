@@ -10,10 +10,17 @@ export default function  HorariosLlegadaReg() {
     const [desde, setDesde] = useState("00:00");
     const [hasta, setHasta] = useState("23:59");
     const [orden, setOrden] = useState("hora");
-    const [modoDia, setModoDia] = useState("");
 
     const navigate = useNavigate();
 
+    const obtenerDiaActual = () => {
+        const dia = new Date().getDay();
+        if (dia === 0) return "domingo";
+        if (dia === 6) return "sabado";
+        return "habil";
+      };
+      
+    const [modoDia, setModoDia] = useState(obtenerDiaActual());      
 
     useEffect(() => {
         const nombreCSV = obtenerNombreCSV(modoDia);
