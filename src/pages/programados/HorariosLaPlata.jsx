@@ -55,7 +55,7 @@ export default function HorariosLaPlata() {
   return (
     <div className="min-h-screen bg-[#FCE677]">
       <div className="max-w-4xl mx-auto p-8">
-        <h1 className="text-3xl font-bold text-gray-800 mb-6 text-center">🚌 Horarios desde Plaza Italia</h1>
+        <h1 className="text-3xl font-bold text-gray-800 mb-6 text-center">🚌 Horarios desde Plaza San Martín</h1>
 
         <div className="flex justify-center gap-8 my-8">
           <button

@@ -167,7 +167,7 @@ export default function  HorariosLlegadaReg() {
                     </div>
                 ) : (
                     <>
-                    <BotonesDescarga horarios={horariosFiltrados} />
+                    <BotonesDescarga horarios={horariosFiltrados} nombre="Segui" />
                     <div className="grid grid-cols-1 gap-6">
                         {horariosFiltrados.map((item, index) => {
                             const tipo = item.Nombre.startsWith("[G]") ? "green" : "red";

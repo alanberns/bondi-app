@@ -203,7 +203,7 @@ export default function HorariosPzaItaliaReg() {
           </div>
         ) : (
           <>
-            <BotonesDescarga horarios={horariosFiltrados} nombre="PzaVillaElisa" />
+            <BotonesDescarga horarios={horariosFiltrados} nombre="PzaItalia" />
             <div className="grid grid-cols-1 gap-6">
               {horariosFiltrados.map((item, index) => {
                 const coloresPorTipo = {
