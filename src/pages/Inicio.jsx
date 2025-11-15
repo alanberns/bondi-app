@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaClock, FaRegEdit } from 'react-icons/fa';
+import { FaClock, FaRegEdit, FaBus } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 
 export default function Inicio() {
@@ -16,14 +16,19 @@ export default function Inicio() {
           <div className="grid grid-cols-2 gap-6 w-full max-w-3xl">
             {[
               {
-                label: 'Horarios programados',
-                icon: <FaClock className="text-4xl mb-2 text-white" />,
-                path: '/programados',
+                label: 'Próximos arribos',
+                icon: <FaBus className="text-4xl mb-2 text-white" />,
+                path: '/arribos',
               },
               {
                 label: 'Horarios registrados',
                 icon: <FaRegEdit className="text-4xl mb-2 text-white" />,
                 path: '/registrados',
+              },
+              {
+                label: 'Horarios programados',
+                icon: <FaClock className="text-4xl mb-2 text-white" />,
+                path: '/programados',
               },
             ].map(({ label, icon, path }, index) => (
               <button

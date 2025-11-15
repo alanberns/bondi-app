@@ -1,0 +1,98 @@
+/***
+talpave.js
+
+import { obtenerDatos } from './horarios';
+
+export default async function handler(req, res) {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "GET");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  const codsLinea = ["1028"];
+  const codsParada = ["TALP 1309"];
+
+  const todas = await Promise.all(
+    codsLinea.map((linea, i) => obtenerDatos(linea, codsParada[i]))
+  );
+
+  const combinadas = todas
+    .flat()
+    .map(d => {
+      let nombreFinal = "[338] " + d.nombre;
+      
+      return {
+        Nombre: nombreFinal,
+        Hora: d.hora,
+      };
+    })
+    .sort((a, b) => a.Hora.localeCompare(b.Hora));
+
+  res.status(200).json(combinadas);
+}
+
+
+*******
+
+talpasj.js
+
+import { obtenerDatos } from './horarios';
+
+export default async function handler(req, res) {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "GET");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  const codsLinea = ["1028"];
+  const codsParada = ["TALP 1041"];
+
+  const todas = await Promise.all(
+    codsLinea.map((linea, i) => obtenerDatos(linea, codsParada[i]))
+  );
+
+  const combinadas = todas
+    .flat()
+    .map(d => {
+      let nombreFinal = "[338] " + d.nombre;
+      
+      return {
+        Nombre: nombreFinal,
+        Hora: d.hora,
+      };
+    })
+    .sort((a, b) => a.Hora.localeCompare(b.Hora));
+
+  res.status(200).json(combinadas);
+}
+
+
+*****
+
+talpalp 
+
+import { obtenerDatos } from './horarios';
+
+export default async function handler(req, res) {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "GET");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  const codsLinea = ["1028"];
+  const codsParada = ["TALP 1503"];
+
+  const todas = await Promise.all(
+    codsLinea.map((linea, i) => obtenerDatos(linea, codsParada[i]))
+  );
+
+  const combinadas = todas
+    .flat()
+    .map(d => {
+      let nombreFinal = "[338] " + d.nombre;
+      
+      return {
+        Nombre: nombreFinal,
+        Hora: d.hora,
+      };
+    })
+    .sort((a, b) => a.Hora.localeCompare(b.Hora));
+
+  res.status(200).json(combinadas);
+}
+
+***/

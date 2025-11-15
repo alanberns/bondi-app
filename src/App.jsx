@@ -1,4 +1,3 @@
-import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Inicio from './pages/Inicio';
 import HorariosProgramados from './pages/programados/HorariosProgramados';
@@ -13,6 +12,12 @@ import HorariosPzaItaliaReg from './pages/registrados/HorariosPzaItaliaReg';
 import HorariosPzaVEReg from './pages/registrados/HorariosPzaVEReg';
 import HorariosPzaVE from './pages/programados/HorariosPzaVE';
 import HorariosPzaItalia from './pages/programados/HorariosPzaItalia';
+import HorariosArribos from './pages/arribos/HorariosArribos';
+import ArribosCasa from './pages/arribos/ArribosCasa';
+import ArribosLaPlata from './pages/arribos/ArribosLaPlata';
+import ArribosLlegada from './pages/arribos/ArribosLlegada';
+import ArribosPlazaVE from './pages/arribos/ArribosPzaVE';
+import ArribosPzaItalia from './pages/arribos/ArribosPzaItalia';
 
 const App = () => {
   return (
@@ -32,6 +37,12 @@ const App = () => {
           <Route path="/registrados/llegadaCasa" element={<HorariosLlegadaReg />} />
           <Route path="/registrados/italia" element={<HorariosPzaItaliaReg />} />
           <Route path="/registrados/plazave" element={<HorariosPzaVEReg />} />
+          <Route path="/arribos" element={<HorariosArribos />} />
+          <Route path="/arribos/casa" element={<ArribosCasa />} />
+          <Route path="/arribos/laplata" element={<ArribosLaPlata />} />
+          <Route path="/arribos/llegadaCasa" element={<ArribosLlegada />} />
+          <Route path="/arribos/plazave" element={<ArribosPlazaVE />} />
+          <Route path="/arribos/italia" element={<ArribosPzaItalia />} />
         </Routes>
       </Router>
     </main>
