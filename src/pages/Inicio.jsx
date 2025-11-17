@@ -57,7 +57,7 @@ export default function Inicio() {
             })}
           </div>
           <p className="text-sm text-gray-600 max-w-md">
-            App de uso personal. Datos de <a href="https://cuandollega.smartmovepro.net/" className="underline text-blue-600">cuandollega.smartmovepro.net/unionplatense</a>
+            App de uso personal. Datos de <a href="https://cuandollega.smartmovepro.net/" className="underline text-blue-600">cuandollega.smartmovepro.net/</a>
           </p>
         </div>
       </div>

@@ -32,7 +32,7 @@ export default function ArribosMoqsa() {
   return (
     <div className="min-h-screen bg-[#F5F5F5] flex flex-col items-center justify-center p-4">
       <h1 className="text-3xl font-bold text-gray-800 mb-8 text-center">
-        Próximos arribos (Moqsa)
+        Próximos arribos (MOQSA)
       </h1>
       <div className="grid grid-cols-1 gap-4 w-full max-w-md">
         {botones.map(({ label, icon, path }, index) => (

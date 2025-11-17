@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { FaChevronDown, FaSync } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import Spinner from "../../components/Spinner";
 
 export default function ObtenerArribosMoqsa({ apiUrl, titulo }) {
   const [horarios, setHorarios] = useState([]);
@@ -40,8 +41,6 @@ export default function ObtenerArribosMoqsa({ apiUrl, titulo }) {
 
   const toggleFiltro = () => setMostrarFiltro(prev => !prev);
 
-  if (loading) return <p className="text-center text-gray-500">Cargando horarios...</p>;
-
   return (
     <div className="min-h-screen bg-[#E8F5E9]"> {/* verde muy claro de fondo */}
       <div className="max-w-4xl mx-auto p-8">
@@ -70,81 +69,87 @@ export default function ObtenerArribosMoqsa({ apiUrl, titulo }) {
           </button>
         </div>
 
-        {/* ✅ Filtro por ramal */}
-        <div className="mb-6">
-          <button
-            onClick={toggleFiltro}
-            className="flex items-center justify-between w-full text-xl font-semibold text-green-700 mb-2"
-          >
-            Filtrar por ramal
-            <span className={`transform transition-transform duration-300 ${mostrarFiltro ? 'rotate-180' : 'rotate-0'}`}>
-              <FaChevronDown />
-            </span>
-          </button>
-
-          {mostrarFiltro && (
-            <>
-              <div className="flex gap-4 mb-4">
-                <button
-                  onClick={() => setSeleccionados(nombresUnicos)}
-                  className="px-4 py-2 text-white rounded bg-green-600 hover:bg-green-700"
-                >
-                  Seleccionar todos
-                </button>
-                <button
-                  onClick={() => setSeleccionados([])}
-                  className="px-4 py-2 text-white rounded bg-green-600 hover:bg-green-700"
-                >
-                  Deseleccionar todos
-                </button>
-              </div>
-
-              <div className="flex flex-wrap gap-4">
-                {nombresUnicos.map((bandera, i) => (
-                  <label key={i} className="flex items-center space-x-2 bg-white px-4 py-2 rounded-lg shadow border border-green-300">
-                    <input
-                      type="checkbox"
-                      checked={seleccionados.includes(bandera)}
-                      onChange={() => toggleNombre(bandera)}
-                    />
-                    <span className="text-green-800">{bandera}</span>
-                  </label>
-                ))}
-              </div>
-            </>
-          )}
-        </div>
-
-        {/* 🚌 Lista filtrada */}
-        {horariosFiltrados.length === 0 ? (
-          <div className="text-center text-green-600 text-base mt-8">
-            🚫 No hay horarios que coincidan con los filtros seleccionados.
-          </div>
+        {loading ? (
+          <Spinner color="border-green-800" />
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            {horariosFiltrados.map((item, index) => {
-              return (
-                <div
-                  key={index}
-                  className={`bg-white p-3 rounded-md shadow border-l-8 border-l-green-800 transition duration-300 w-full`}
-                >
-                  <p className="text-sm font-semibold text-green-800 mb-1 truncate">
-                    {item.descripcionLinea} - {item.descripcionBandera}
-                  </p>
-                  <p className="text-lg font-bold text-gray-700">{item.tiempoRestanteArribo}</p>
-                  <p className="text-xs text-gray-600 mt-1">
-                    {item.desvioHorario.startsWith("-")
-                      ? `Atrasado: ${item.desvioHorario}`
-                      : `Adelantado: ${item.desvioHorario}`}
-                  </p>
-                  <p className="text-gray-500 mt-1 text-xs">
-                    Coche: {item.identificadorCoche} | Chofer: {item.identificadorChofer}
-                  </p>
-                </div>
-              );
-            })}
-          </div>
-        )}
+          <>
+            {/* ✅ Filtro por ramal */}
+            <div className="mb-6">
+              <button
+                onClick={toggleFiltro}
+                className="flex items-center justify-between w-full text-xl font-semibold text-green-700 mb-2"
+              >
+                Filtrar por ramal
+                <span className={`transform transition-transform duration-300 ${mostrarFiltro ? 'rotate-180' : 'rotate-0'}`}>
+                  <FaChevronDown />
+                </span>
+              </button>
+
+              {mostrarFiltro && (
+                <>
+                  <div className="flex gap-4 mb-4">
+                    <button
+                      onClick={() => setSeleccionados(nombresUnicos)}
+                      className="px-4 py-2 text-white rounded bg-green-600 hover:bg-green-700"
+                    >
+                      Seleccionar todos
+                    </button>
+                    <button
+                      onClick={() => setSeleccionados([])}
+                      className="px-4 py-2 text-white rounded bg-green-600 hover:bg-green-700"
+                    >
+                      Deseleccionar todos
+                    </button>
+                  </div>
+
+                  <div className="flex flex-wrap gap-4">
+                    {nombresUnicos.map((bandera, i) => (
+                      <label key={i} className="flex items-center space-x-2 bg-white px-4 py-2 rounded-lg shadow border border-green-300">
+                        <input
+                          type="checkbox"
+                          checked={seleccionados.includes(bandera)}
+                          onChange={() => toggleNombre(bandera)}
+                        />
+                        <span className="text-green-800">{bandera}</span>
+                      </label>
+                    ))}
+                  </div>
+                </>
+              )}
+            </div>
+
+            {/* 🚌 Lista filtrada */}
+            {horariosFiltrados.length === 0 ? (
+              <div className="text-center text-green-600 text-base mt-8">
+                🚫 No hay horarios que coincidan con los filtros seleccionados.
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {horariosFiltrados.map((item, index) => {
+                  return (
+                    <div
+                      key={index}
+                      className={`bg-white p-3 rounded-md shadow border-l-8 border-l-green-800 transition duration-300 w-full`}
+                    >
+                      <p className="text-sm font-semibold text-green-800 mb-1 truncate">
+                        {item.descripcionLinea} - {item.descripcionBandera}
+                      </p>
+                      <p className="text-lg font-bold text-gray-700">{item.tiempoRestanteArribo}</p>
+                      <p className="text-xs text-gray-600 mt-1">
+                        {item.desvioHorario.startsWith("-")
+                          ? `Atrasado: ${item.desvioHorario}`
+                          : `Adelantado: ${item.desvioHorario}`}
+                      </p>
+                      <p className="text-gray-500 mt-1 text-xs">
+                        Coche: {item.identificadorCoche} | Chofer: {item.identificadorChofer}
+                      </p>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+          </>
+        )};
       </div>
     </div>
   );
