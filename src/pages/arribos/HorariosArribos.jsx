@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState } from 'react';
 import {
   FaHome,
   FaMapMarkerAlt,
@@ -9,6 +9,7 @@ import {
 import { useNavigate } from 'react-router-dom';
 
 export default function HorariosArribos() {
+  const [idParada, setIdParada] = useState("");
   const navigate = useNavigate();
 
   const botones = [
@@ -20,11 +21,33 @@ export default function HorariosArribos() {
     { label: 'Axion', icon: <FaCity className="text-2xl text-white" />, path: '/arribos/axion' },
   ];
 
+  const handleEnviar = () => {
+      if (idParada.trim() !== "") {
+        navigate(`/arribos/parada/${idParada}`);
+      }
+    };
+
   return (
     <div className="min-h-screen bg-[#F5F5F5] flex flex-col items-center justify-center px-4">
       <h1 className="text-3xl font-bold text-gray-800 mb-8 text-center">
         Próximos arribos
       </h1>
+      {/* Input para idParada */}
+      <div className="flex gap-2 mb-6 w-full max-w-md">
+        <input
+          type="text"
+          value={idParada}
+          onChange={(e) => setIdParada(e.target.value)}
+          placeholder="Ingresá ID de parada"
+          className="flex-1 border rounded px-3 py-2"
+        />
+        <button
+          onClick={handleEnviar}
+          className="bg-yellow-400 hover:bg-yellow-500 text-white px-4 py-2 rounded"
+        >
+          Enviar
+        </button>
+      </div>
       <div className="grid grid-cols-1 gap-4 w-full max-w-md">
         {botones.map(({ label, icon, path }, index) => (
           <button

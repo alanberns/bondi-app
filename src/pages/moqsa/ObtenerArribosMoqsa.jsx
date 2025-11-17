@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { FaChevronDown, FaSync } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import Spinner from "../../components/Spinner";
@@ -8,12 +9,15 @@ export default function ObtenerArribosMoqsa({ apiUrl, titulo }) {
   const [loading, setLoading] = useState(true);
   const [seleccionados, setSeleccionados] = useState([]);
   const [mostrarFiltro, setMostrarFiltro] = useState(false);
+  const { idParada } = useParams();
   const navigate = useNavigate();
+
+  const finalUrl = idParada ? `${apiUrl}${idParada}` : apiUrl;
 
   const fetchHorarios = async () => {
     try {
       setLoading(true);
-      const res = await fetch(apiUrl);
+      const res = await fetch(finalUrl);
       const data = await res.json();
       const arribos = data.arribos || [];
       setHorarios(arribos);
@@ -28,7 +32,7 @@ export default function ObtenerArribosMoqsa({ apiUrl, titulo }) {
 
   useEffect(() => {
     fetchHorarios();
-  }, [apiUrl]);
+  }, [finalUrl]);
 
   const nombresUnicos = [...new Set(horarios.map(h => (h.descripcionLinea || "").trim()))];
   const horariosFiltrados = horarios.filter(h => seleccionados.includes((h.descripcionLinea || "").trim()));
@@ -149,7 +153,7 @@ export default function ObtenerArribosMoqsa({ apiUrl, titulo }) {
               </div>
             )}
           </>
-        )};
+        )}
       </div>
     </div>
   );

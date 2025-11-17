@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import {
   FaHome,
   FaShoppingBag,
@@ -13,6 +14,7 @@ import {
 import { useNavigate } from 'react-router-dom';
 
 export default function ArribosMoqsa() {
+  const [idParada, setIdParada] = useState("");
   const navigate = useNavigate();
 
   const botones = [
@@ -29,11 +31,33 @@ export default function ArribosMoqsa() {
     { label: 'Ducilo a Bera', icon: <FaIndustry className="text-2xl text-white" />, path: '/arribosmoqsa/ducilobera' },
   ];
 
+    const handleEnviar = () => {
+      if (idParada.trim() !== "") {
+        navigate(`/arribosmoqsa/parada/${idParada}`);
+      }
+    };
+
   return (
     <div className="min-h-screen bg-[#F5F5F5] flex flex-col items-center justify-center p-4">
       <h1 className="text-3xl font-bold text-gray-800 mb-8 text-center">
         Próximos arribos (MOQSA)
       </h1>
+      {/* Input para idParada */}
+      <div className="flex gap-2 mb-6 w-full max-w-md">
+        <input
+          type="text"
+          value={idParada}
+          onChange={(e) => setIdParada(e.target.value)}
+          placeholder="Ingresá ID de parada"
+          className="flex-1 border rounded px-3 py-2"
+        />
+        <button
+          onClick={handleEnviar}
+          className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded"
+        >
+          Enviar
+        </button>
+      </div>
       <div className="grid grid-cols-1 gap-4 w-full max-w-md">
         {botones.map(({ label, icon, path }, index) => (
           <button

@@ -49,6 +49,7 @@ const App = () => {
           <Route path="/arribos/plazave" element={<ObtenerArribos apiUrl={"https://back-api-bondi.vercel.app/api/unionplatense?idParada=TALP%201608&idParada=LP10858"} titulo={"Pza. Villa Elisa"} />} />
           <Route path="/arribos/italia" element={<ObtenerArribos apiUrl={"https://back-api-bondi.vercel.app/api/unionplatense?idParada=TALP%201009&idParada=LP5005&idParada=LP11500"} titulo={"Pza. Italia"} />} />
           <Route path="/arribos/axion" element={<ObtenerArribos apiUrl={"https://back-api-bondi.vercel.app/api/unionplatense?idParada=LP10774"} titulo={"419 y Belgrano a Villa Elisa"} />} />
+          <Route path="/arribos/parada/:idParada" element={<ObtenerArribos apiUrl="https://back-api-bondi.vercel.app/api/unionplatense?idParada=" titulo="Arribos" />}/>
 
           <Route path="/arribosmoqsa/" element={<ArribosMoqsa />} />
           <Route path="/arribosmoqsa/walmart" element={<ObtenerArribosMoqsa apiUrl="https://back-api-bondi.vercel.app/api/moqsa?idParada=MO-01570" titulo="Arribos walmart" />} />
@@ -62,6 +63,7 @@ const App = () => {
           <Route path="/arribosmoqsa/ducilocap" element={<ObtenerArribosMoqsa apiUrl="https://back-api-bondi.vercel.app/api/moqsa?idParada=MO-00544" titulo="Arribos Ducilo a Capital" />} />
           <Route path="/arribosmoqsa/ducilobera" element={<ObtenerArribosMoqsa apiUrl="https://back-api-bondi.vercel.app/api/moqsa?idParada=MO-00781" titulo="Arribos Ducilo a Bera" />} />
           <Route path="/arribosmoqsa/debenedetti" element={<ObtenerArribosMoqsa apiUrl="https://back-api-bondi.vercel.app/api/moqsa?idParada=MO-01328" titulo="Arribos Debenedetti" />} />
+          <Route path="/arribosmoqsa/parada/:idParada" element={<ObtenerArribosMoqsa apiUrl="https://back-api-bondi.vercel.app/api/moqsa?idParada=" titulo="Arribos" />}/>
         </Routes>
       </Router>
     </main>
