@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { FaChevronDown } from "react-icons/fa";
+import { FaChevronDown, FaSync } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
 export default function ObtenerArribosMoqsa({ apiUrl, titulo }) {
@@ -9,21 +9,23 @@ export default function ObtenerArribosMoqsa({ apiUrl, titulo }) {
   const [mostrarFiltro, setMostrarFiltro] = useState(false);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    async function fetchHorarios() {
-      try {
-        const res = await fetch(apiUrl);
-        const data = await res.json();
-        const arribos = data.arribos || [];
-        setHorarios(arribos);
-        const nombresUnicos = [...new Set(arribos.map(h => (h.descripcionLinea || "").trim()))];
-        setSeleccionados(nombresUnicos);
-      } catch (error) {
-        console.error("Error al obtener los horarios:", error);
-      } finally {
-        setLoading(false);
-      }
+  const fetchHorarios = async () => {
+    try {
+      setLoading(true);
+      const res = await fetch(apiUrl);
+      const data = await res.json();
+      const arribos = data.arribos || [];
+      setHorarios(arribos);
+      const nombresUnicos = [...new Set(arribos.map(h => (h.descripcionLinea || "").trim()))];
+      setSeleccionados(nombresUnicos);
+    } catch (error) {
+      console.error("Error al obtener los horarios:", error);
+    } finally {
+      setLoading(false);
     }
+  };
+
+  useEffect(() => {
     fetchHorarios();
   }, [apiUrl]);
 
@@ -58,6 +60,13 @@ export default function ObtenerArribosMoqsa({ apiUrl, titulo }) {
             onClick={() => navigate('/')}
           >
             Inicio
+          </button>
+          {/* ✅ Botón refrescar */}
+          <button
+            className="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-6 rounded-lg shadow flex items-center gap-2 transition duration-300"
+            onClick={fetchHorarios}
+          >
+            <FaSync /> Refrescar
           </button>
         </div>
 
