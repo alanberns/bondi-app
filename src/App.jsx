@@ -16,12 +16,7 @@ import HorariosPzaItaliaReg from './pages/registrados/HorariosPzaItaliaReg';
 import HorariosPzaVEReg from './pages/registrados/HorariosPzaVEReg';
 
 import HorariosArribos from './pages/arribos/HorariosArribos';
-import ArribosCasa from './pages/arribos/ArribosCasa';
-import ArribosLaPlata from './pages/arribos/ArribosLaPlata';
-import ArribosLlegada from './pages/arribos/ArribosLlegada';
-import ArribosPlazaVE from './pages/arribos/ArribosPzaVE';
-import ArribosPzaItalia from './pages/arribos/ArribosPzaItalia';
-import ArribosAxion from './pages/arribos/arribosAxion';
+import ObtenerArribos from './pages/arribos/ObtenerArribos';
 
 import ArribosMoqsa from './pages/moqsa/ArribosMoqsa';
 import ObtenerArribosMoqsa from './pages/moqsa/ObtenerArribosMoqsa';
@@ -48,12 +43,12 @@ const App = () => {
           <Route path="/registrados/plazave" element={<HorariosPzaVEReg />} />
 
           <Route path="/arribos" element={<HorariosArribos />} />
-          <Route path="/arribos/casa" element={<ArribosCasa />} />
-          <Route path="/arribos/laplata" element={<ArribosLaPlata />} />
-          <Route path="/arribos/llegadaCasa" element={<ArribosLlegada />} />
-          <Route path="/arribos/plazave" element={<ArribosPlazaVE />} />
-          <Route path="/arribos/italia" element={<ArribosPzaItalia />} />
-          <Route path="/arribos/axion" element={<ArribosAxion />} />
+          <Route path="/arribos/casa" element={<ObtenerArribos apiUrl={"https://back-api-bondi.vercel.app/api/unionplatense?idParada=LP10485"} titulo={"Casa"} />} />
+          <Route path="/arribos/laplata" element={<ObtenerArribos apiUrl={"https://back-api-bondi.vercel.app/api/unionplatense?idParada=LP2310"} titulo={"Plaza San Martín"} />} />
+          <Route path="/arribos/llegadaCasa" element={<ObtenerArribos apiUrl={"https://back-api-bondi.vercel.app/api/unionplatense?idParada=LP10481"} titulo={"Llegada a casa"} />} />
+          <Route path="/arribos/plazave" element={<ObtenerArribos apiUrl={"https://back-api-bondi.vercel.app/api/unionplatense?idParada=TALP%201608&idParada=LP10858"} titulo={"Pza. Villa Elisa"} />} />
+          <Route path="/arribos/italia" element={<ObtenerArribos apiUrl={"https://back-api-bondi.vercel.app/api/unionplatense?idParada=TALP%201009&idParada=LP5005&idParada=LP11500"} titulo={"Pza. Italia"} />} />
+          <Route path="/arribos/axion" element={<ObtenerArribos apiUrl={"https://back-api-bondi.vercel.app/api/unionplatense?idParada=LP10774"} titulo={"419 y Belgrano a Villa Elisa"} />} />
 
           <Route path="/arribosmoqsa/" element={<ArribosMoqsa />} />
           <Route path="/arribosmoqsa/walmart" element={<ObtenerArribosMoqsa apiUrl="https://back-api-bondi.vercel.app/api/moqsa?idParada=MO-01570" titulo="Arribos walmart" />} />

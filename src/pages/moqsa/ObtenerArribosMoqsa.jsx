@@ -114,23 +114,10 @@ export default function ObtenerArribosMoqsa({ apiUrl, titulo }) {
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {horariosFiltrados.map((item, index) => {
-              const coloresPorTipo = {
-                "[G]": "border-l-green-500",
-                "[D]": "border-l-red-500",
-                "[4]": "border-l-gray-800",
-                "[HX28]": "border-l-gray-800",
-                "[BG]": "border-l-gray-800",
-                "[TOP]": "border-l-blue-500",
-                "[418]": "border-l-blue-500",
-                "[338]": "border-l-cyan-500",
-              };
-              const tipo = item.descripcionBandera.match(/^\[[^\]]+\]/)?.[0] || "default";
-              const bordeColor = coloresPorTipo[tipo] || "border-l-green-200";
-
               return (
                 <div
                   key={index}
-                  className={`bg-white p-3 rounded-md shadow border-l-8 ${bordeColor} transition duration-300 w-full`}
+                  className={`bg-white p-3 rounded-md shadow border-l-8 border-l-green-800 transition duration-300 w-full`}
                 >
                   <p className="text-sm font-semibold text-green-800 mb-1 truncate">
                     {item.descripcionLinea} - {item.descripcionBandera}
