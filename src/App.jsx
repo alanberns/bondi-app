@@ -25,7 +25,7 @@ import ObtenerArribosMoqsa from './pages/moqsa/ObtenerArribosMoqsa';
 const App = () => {
   return (
     <main className=''>
-      <Router basename="/bondi-app">
+      <Router basename="/">
         <Routes>
           <Route path="/" element={<Inicio />} />
           <Route path="/programados" element={<HorariosProgramados />} />
