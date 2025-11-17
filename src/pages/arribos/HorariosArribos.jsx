@@ -37,6 +37,11 @@ export default function HorariosArribos() {
       icon: <FaCity className="text-4xl mb-2 text-white" />,
       path: '/arribos/italia',
     },
+    {
+      label: 'Axion',
+      icon: <FaCity className="text-4xl mb-2 text-white" />,
+      path: '/arribos/axion',
+    },
   ];
 
   return (

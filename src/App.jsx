@@ -18,6 +18,7 @@ import ArribosLaPlata from './pages/arribos/ArribosLaPlata';
 import ArribosLlegada from './pages/arribos/ArribosLlegada';
 import ArribosPlazaVE from './pages/arribos/ArribosPzaVE';
 import ArribosPzaItalia from './pages/arribos/ArribosPzaItalia';
+import ArribosAxion from './pages/arribos/arribosAxion';
 
 const App = () => {
   return (
@@ -43,6 +44,7 @@ const App = () => {
           <Route path="/arribos/llegadaCasa" element={<ArribosLlegada />} />
           <Route path="/arribos/plazave" element={<ArribosPlazaVE />} />
           <Route path="/arribos/italia" element={<ArribosPzaItalia />} />
+          <Route path="/arribos/axion" element={<ArribosAxion />} />
         </Routes>
       </Router>
     </main>
