@@ -11,7 +11,7 @@ const [horarios, setHorarios] = useState([]);
   useEffect(() => {
     async function fetchHorarios() {
       try {
-        const res = await fetch("https://back-api-bondi.vercel.app/api/arribosSanMartin");
+        const res = await fetch("https://back-api-bondi.vercel.app/api/unionplatense?idParada=LP2310");
         const data = await res.json();
         setHorarios(data);
       } catch (error) {

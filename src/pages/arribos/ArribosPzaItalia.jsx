@@ -17,7 +17,7 @@ export default function HorariosPzaVEReg() {
 
     async function fetchHorarios() {
       try {
-        const res = await fetch("https://back-api-bondi.vercel.app/api/arribosPzaItalia");
+        const res = await fetch("https://back-api-bondi.vercel.app/api/unionplatense?idParada=TALP%201009&idParada=LP5005");
         const data = await res.json();
         setHorarios(data);
         const nombresUnicos = [...new Set(data.map(h => h.nombre))];

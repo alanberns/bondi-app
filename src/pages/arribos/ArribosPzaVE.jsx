@@ -17,7 +17,7 @@ export default function ArribosPzaVE() {
 
     async function fetchHorarios() {
       try {
-        const res = await fetch("https://back-api-bondi.vercel.app/api/arribosPzaVe");
+        const res = await fetch("https://back-api-bondi.vercel.app/api/unionplatense?idParada=TALP%201608&idParada=LP10858");
         const data = await res.json();
         setHorarios(data);
         const nombresUnicos = [...new Set(data.map(h => h.nombre))];

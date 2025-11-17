@@ -11,7 +11,7 @@ export default function ArribosLlegada() {
   useEffect(() => {
     async function fetchHorarios() {
       try {
-        const res = await fetch("https://back-api-bondi.vercel.app/api/arribosSegui");
+        const res = await fetch("https://back-api-bondi.vercel.app/api/unionplatense?idParada=LP10481");
         const data = await res.json();
         setHorarios(data);
       } catch (error) {
