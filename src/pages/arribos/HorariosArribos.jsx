@@ -5,6 +5,7 @@ import {
   FaFlagCheckered,
   FaCity,
   FaTree,
+  FaGasPump,
 } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 
@@ -18,7 +19,7 @@ export default function HorariosArribos() {
     { label: 'Llegada a casa', icon: <FaFlagCheckered className="text-2xl text-white" />, path: '/arribos/llegadaCasa' },
     { label: 'Plaza Villa Elisa', icon: <FaTree className="text-2xl text-white" />, path: '/arribos/plazave' },
     { label: 'Plaza Italia', icon: <FaCity className="text-2xl text-white" />, path: '/arribos/italia' },
-    { label: 'Axion', icon: <FaCity className="text-2xl text-white" />, path: '/arribos/axion' },
+    { label: 'Axion', icon: <FaGasPump className="text-2xl text-white" />, path: '/arribos/axion' },
   ];
 
   const handleEnviar = () => {

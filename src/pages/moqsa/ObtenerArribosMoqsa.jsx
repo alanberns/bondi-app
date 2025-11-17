@@ -14,6 +14,14 @@ export default function ObtenerArribosMoqsa({ apiUrl, titulo }) {
 
   const finalUrl = idParada ? `${apiUrl}${idParada}` : apiUrl;
 
+  useEffect(() => {
+    // Al montar, leo lo que haya en localStorage
+    const saved = localStorage.getItem("filtroSeleccionados");
+    if (saved) {
+      setSeleccionados(JSON.parse(saved));
+    }
+  }, []);
+
   const fetchHorarios = async () => {
     try {
       setLoading(true);
@@ -21,14 +29,25 @@ export default function ObtenerArribosMoqsa({ apiUrl, titulo }) {
       const data = await res.json();
       const arribos = data.arribos || [];
       setHorarios(arribos);
+
       const nombresUnicos = [...new Set(arribos.map(h => (h.descripcionLinea || "").trim()))];
-      setSeleccionados(nombresUnicos);
+
+      // Si no había nada guardado en localStorage y seleccionados está vacío, inicializo con todos
+      if (seleccionados.length === 0) {
+        setSeleccionados(nombresUnicos);
+      }
     } catch (error) {
       console.error("Error al obtener los horarios:", error);
     } finally {
       setLoading(false);
     }
   };
+
+
+  useEffect(() => {
+    localStorage.setItem("filtroSeleccionados", JSON.stringify(seleccionados));
+  }, [seleccionados]);
+
 
   useEffect(() => {
     fetchHorarios();
