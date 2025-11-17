@@ -108,11 +108,11 @@ export default function ObtenerArribos({ apiUrl, titulo }) {
 
         {/* 🚌 Lista filtrada */}
         {horariosFiltrados.length === 0 ? (
-          <div className="text-center text-gray-600 text-xl mt-12">
+          <div className="text-center text-gray-600 text-base mt-8">
             🚫 No hay horarios que coincidan con los filtros seleccionados.
           </div>
         ) : (
-          <div className="grid grid-cols-1 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {horariosFiltrados.map((item, index) => {
               const coloresPorTipo = {
                 "[G]": "border-l-green-500",
@@ -130,19 +130,19 @@ export default function ObtenerArribos({ apiUrl, titulo }) {
               return (
                 <div
                   key={index}
-                  className={`bg-white p-6 rounded-xl shadow-md border-l-8 ${bordeColor} transition duration-300`}
+                  className={`bg-white p-3 rounded-md shadow border-l-8 ${bordeColor} transition duration-300 w-full`}
                 >
-                  <p className="text-xl font-semibold text-gray-800 mb-2">
+                  <p className="text-sm font-semibold text-gray-800 mb-1 truncate">
                     {item.descripcionBandera} - ({item.descripcionCortaBandera})
                   </p>
-                  <p className="text-3xl font-bold text-gray-600">{item.tiempoRestanteArribo}</p>
-                  <p className="text-gray-700 mt-2">
-                    Coche: {item.identificadorCoche} | Chofer: {item.identificadorChofer}
-                  </p>
-                  <p className="text-sm text-gray-500">
+                  <p className="text-lg font-bold text-gray-600">{item.tiempoRestanteArribo}</p>
+                  <p className="text-xs text-gray-700 mt-1">
                     {item.desvioHorario.startsWith("-")
                       ? `Atrasado: ${item.desvioHorario}`
                       : `Adelantado: ${item.desvioHorario}`}
+                  </p>
+                  <p className="text-gray-500 mt-1 text-xs">
+                    Coche: {item.identificadorCoche} | Chofer: {item.identificadorChofer}
                   </p>
                 </div>
               );
