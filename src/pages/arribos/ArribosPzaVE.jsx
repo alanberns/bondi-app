@@ -19,8 +19,17 @@ export default function ArribosPzaVE() {
       try {
         const res = await fetch("https://back-api-bondi.vercel.app/api/unionplatense?idParada=TALP%201608&idParada=LP10858");
         const data = await res.json();
-        setHorarios(data);
-        const nombresUnicos = [...new Set(data.map(h => h.nombre))];
+        const adaptados = (data.arribos || []).map(a => ({
+          nombre: a.descripcionBandera, 
+          hora: a.tiempoRestanteArribo, 
+          coche: a.identificadorCoche,
+          chofer: a.identificadorChofer,
+          DescripcionCortaBandera: a.descripcionCortaBandera,
+          DesvioHorario: a.desvioHorario,
+        }));
+
+        setHorarios(adaptados);
+        const nombresUnicos = [...new Set(adaptados.map(h => h.nombre))];
         setSeleccionados(nombresUnicos);
       } catch (error) {
         console.error("Error al obtener los horarios:", error);

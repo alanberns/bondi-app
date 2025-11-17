@@ -13,7 +13,16 @@ export default function ArribosLlegada() {
       try {
         const res = await fetch("https://back-api-bondi.vercel.app/api/unionplatense?idParada=LP10481");
         const data = await res.json();
-        setHorarios(data);
+        const adaptados = (data.arribos || []).map(a => ({
+          nombre: a.descripcionBandera, 
+          hora: a.tiempoRestanteArribo, 
+          coche: a.identificadorCoche,
+          chofer: a.identificadorChofer,
+          DescripcionCortaBandera: a.descripcionCortaBandera,
+          DesvioHorario: a.desvioHorario,
+        }));
+
+      setHorarios(adaptados);
       } catch (error) {
         console.error("Error al obtener los horarios:", error);
       } finally {

@@ -8,21 +8,31 @@ export default function HorariosCasa() {
   const navigate = useNavigate();
   
 
-  useEffect(() => {
-    async function fetchHorarios() {
-      try {
-        const res = await fetch("https://back-api-bondi.vercel.app/api/unionplatense?idParada=LP10485");
-        const data = await res.json();
-        setHorarios(data);
-      } catch (error) {
-        console.error("Error al obtener los horarios:", error);
-      } finally {
-        setLoading(false);
-      }
-    }
+useEffect(() => {
+  async function fetchHorarios() {
+    try {
+      const res = await fetch("https://back-api-bondi.vercel.app/api/unionplatense?idParada=LP10485");
+      const data = await res.json();
 
-    fetchHorarios();
-  }, []);
+      const adaptados = (data.arribos || []).map(a => ({
+        nombre: a.descripcionBandera, 
+        hora: a.tiempoRestanteArribo, 
+        coche: a.identificadorCoche,
+        chofer: a.identificadorChofer,
+        DescripcionCortaBandera: a.descripcionCortaBandera,
+        DesvioHorario: a.desvioHorario,
+      }));
+
+      setHorarios(adaptados);
+    } catch (error) {
+      console.error("Error al obtener los horarios:", error);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  fetchHorarios();
+}, []);
 
 if (loading) return <p>Cargando horarios...</p>;
 
