@@ -50,6 +50,12 @@ const App = () => {
           <Route path="/arribos/italia" element={<ObtenerArribos apiUrl={"https://back-api-bondi.vercel.app/api/unionplatense?idParada=TALP%201009&idParada=LP5005&idParada=LP11500"} titulo={"Pza. Italia"} />} />
           <Route path="/arribos/axion" element={<ObtenerArribos apiUrl={"https://back-api-bondi.vercel.app/api/unionplatense?idParada=LP10774"} titulo={"419 y Belgrano a Villa Elisa"} />} />
           <Route path="/arribos/parada/:idParada" element={<ObtenerArribos apiUrl="https://back-api-bondi.vercel.app/api/unionplatense?idParada=" titulo="Arribos" />}/>
+          <Route path="/arribos/retirollegada" element={<ObtenerArribos apiUrl={"https://back-api-bondi.vercel.app/api/unionplatense?idParada=PLAZA%20CANADA"} titulo={"Retiro llegada"} />} />
+          <Route path="/arribos/avbrasil" element={<ObtenerArribos apiUrl={"https://back-api-bondi.vercel.app/api/unionplatense?idParada=BRASIL%20Y%20AZOPARDO"} titulo={"Av. Brasil"} />} />
+          <Route path="/arribos/retiro" element={<ObtenerArribos apiUrl={"https://back-api-bondi.vercel.app/api/unionplatense?idParada=FFCC%20MITRE"} titulo={"Retiro"} />} />
+          <Route path="/arribos/pereyra" element={<ObtenerArribos apiUrl={"https://back-api-bondi.vercel.app/api/unionplatense?idParada=L195004"} titulo={"195 Pereyra"} />} />
+          <Route path="/arribos/laplatacos" element={<ObtenerArribos apiUrl={"https://back-api-bondi.vercel.app/api/unionplatense?idParada=TERMINAL%20LA%20PLATA"} titulo={"195 Llegada La Plata"} />} />
+          <Route path="/arribos/alpargatas" element={<ObtenerArribos apiUrl={"https://back-api-bondi.vercel.app/api/unionplatense?idParada=ROTONDA%20DE%20ALPARGATAS%20VTA&idParada=TALP%201490&idParada=LP1816"} titulo={"Alpargatas"} />} />
 
           <Route path="/arribosmoqsa/" element={<ArribosMoqsa />} />
           <Route path="/arribosmoqsa/walmart" element={<ObtenerArribosMoqsa apiUrl="https://back-api-bondi.vercel.app/api/moqsa?idParada=MO-01570" titulo="Arribos walmart" />} />

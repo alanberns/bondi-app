@@ -6,6 +6,7 @@ import {
   FaCity,
   FaTree,
   FaGasPump,
+  FaBus,
 } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 
@@ -20,6 +21,12 @@ export default function HorariosArribos() {
     { label: 'Plaza Villa Elisa', icon: <FaTree className="text-2xl text-white" />, path: '/arribos/plazave' },
     { label: 'Plaza Italia', icon: <FaCity className="text-2xl text-white" />, path: '/arribos/italia' },
     { label: 'Axion', icon: <FaGasPump className="text-2xl text-white" />, path: '/arribos/axion' },
+    { label: 'Alpargatas', icon: <FaBus className="text-2xl text-white" />, path: '/arribos/alpargatas' },
+    { label: '195 Pereyra', icon: <FaBus className="text-2xl text-white" />, path: '/arribos/pereyra' },
+    { label: '195 Av. Brasil', icon: <FaBus className="text-2xl text-white" />, path: '/arribos/avbrasil' },
+    { label: '195 Retiro', icon: <FaBus className="text-2xl text-white" />, path: '/arribos/retiro' },
+    { label: '195 Llegada Retiro', icon: <FaBus className="text-2xl text-white" />, path: '/arribos/retirollegada' },
+    { label: '195 Llegada La Plata', icon: <FaBus className="text-2xl text-white" />, path: '/arribos/laplatacos' },
   ];
 
   const handleEnviar = () => {
