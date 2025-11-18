@@ -155,7 +155,7 @@ export default function ObtenerArribosMoqsa({ apiUrl, titulo }) {
                       className={`bg-white p-3 rounded-md shadow border-l-8 border-l-green-800 transition duration-300 w-full`}
                     >
                       <p className="text-sm font-semibold text-green-800 mb-1 truncate">
-                        {item.descripcionLinea} - {item.descripcionBandera}
+                        {item.descripcionLinea} - {item.descripcionCortaBandera} ({item.descripcionBandera})
                       </p>
                       <p className="text-lg font-bold text-gray-700">{item.tiempoRestanteArribo}</p>
                       <p className="text-xs text-gray-600 mt-1">
