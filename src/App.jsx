@@ -57,19 +57,19 @@ const App = () => {
           <Route path="/arribos/laplatacos" element={<ObtenerArribos apiUrl={"https://back-api-bondi.vercel.app/api/unionplatense?idParada=TERMINAL%20LA%20PLATA"} titulo={"195 Llegada La Plata"} />} />
           <Route path="/arribos/alpargatas" element={<ObtenerArribos apiUrl={"https://back-api-bondi.vercel.app/api/unionplatense?idParada=ROTONDA%20DE%20ALPARGATAS%20VTA&idParada=TALP%201490&idParada=LP1816"} titulo={"Alpargatas"} />} />
 
-          <Route path="/arribosmoqsa/" element={<ArribosMoqsa />} />
-          <Route path="/arribosmoqsa/walmart" element={<ObtenerArribosMoqsa apiUrl="https://back-api-bondi.vercel.app/api/moqsa?idParada=MO-01570" titulo="Arribos walmart" />} />
-          <Route path="/arribosmoqsa/capital" element={<ObtenerArribosMoqsa apiUrl="https://back-api-bondi.vercel.app/api/moqsa?idParada=MO-00600" titulo="Arribos capital" />} />
-          <Route path="/arribosmoqsa/acceso" element={<ObtenerArribosMoqsa apiUrl="https://back-api-bondi.vercel.app/api/moqsa?idParada=MO-01525" titulo="Arribos acceso y debenedetti" />} />
-          <Route path="/arribosmoqsa/jaramillo" element={<ObtenerArribosMoqsa apiUrl="https://back-api-bondi.vercel.app/api/moqsa?idParada=MO-01357&idParada=MO-01286" titulo="Arribos plaza Jaramillo" />} />
-          <Route path="/arribosmoqsa/sarandi" element={<ObtenerArribosMoqsa apiUrl="https://back-api-bondi.vercel.app/api/moqsa?idParada=MO-01322" titulo="Arribos Est. Sarandí" />} />
-          <Route path="/arribosmoqsa/lasflores" element={<ObtenerArribosMoqsa apiUrl="https://back-api-bondi.vercel.app/api/moqsa?idParada=MO-01071" titulo="Arribos Las Flores a capital" />} />
-          <Route path="/arribosmoqsa/bera" element={<ObtenerArribosMoqsa apiUrl="https://back-api-bondi.vercel.app/api/moqsa?idParada=MO-00352&idParada=MO-01641" titulo="Arribos Est. Berazategui" />} />
-          <Route path="/arribosmoqsa/alpargatas" element={<ObtenerArribosMoqsa apiUrl="https://back-api-bondi.vercel.app/api/moqsa?idParada=MO-00084" titulo="Arribos Alpargatas" />} />
-          <Route path="/arribosmoqsa/ducilocap" element={<ObtenerArribosMoqsa apiUrl="https://back-api-bondi.vercel.app/api/moqsa?idParada=MO-00544" titulo="Arribos Ducilo a Capital" />} />
-          <Route path="/arribosmoqsa/ducilobera" element={<ObtenerArribosMoqsa apiUrl="https://back-api-bondi.vercel.app/api/moqsa?idParada=MO-00781" titulo="Arribos Ducilo a Bera" />} />
-          <Route path="/arribosmoqsa/debenedetti" element={<ObtenerArribosMoqsa apiUrl="https://back-api-bondi.vercel.app/api/moqsa?idParada=MO-01328" titulo="Arribos Debenedetti" />} />
-          <Route path="/arribosmoqsa/parada/:idParada" element={<ObtenerArribosMoqsa apiUrl="https://back-api-bondi.vercel.app/api/moqsa?idParada=" titulo="Arribos" />}/>
+          <Route path="/arribosmoqsa/" element={<ArribosMoqsa />} /> //Cambiamos de api para obtener mas resultados
+          <Route path="/arribosmoqsa/walmart" element={<ObtenerArribosMoqsa apiUrl="https://back-api-bondi.vercel.app/api/unionplatense?idParada=MO-01570" titulo="Arribos walmart" />} />
+          <Route path="/arribosmoqsa/capital" element={<ObtenerArribosMoqsa apiUrl="https://back-api-bondi.vercel.app/api/unionplatense?idParada=MO-00600" titulo="Arribos capital" />} />
+          <Route path="/arribosmoqsa/acceso" element={<ObtenerArribosMoqsa apiUrl="https://back-api-bondi.vercel.app/api/unionplatense?idParada=MO-01525" titulo="Arribos acceso y debenedetti" />} />
+          <Route path="/arribosmoqsa/jaramillo" element={<ObtenerArribosMoqsa apiUrl="https://back-api-bondi.vercel.app/api/unionplatense?idParada=MO-01357&idParada=MO-01286" titulo="Arribos plaza Jaramillo" />} />
+          <Route path="/arribosmoqsa/sarandi" element={<ObtenerArribosMoqsa apiUrl="https://back-api-bondi.vercel.app/api/unionplatense?idParada=MO-01322" titulo="Arribos Est. Sarandí" />} />
+          <Route path="/arribosmoqsa/lasflores" element={<ObtenerArribosMoqsa apiUrl="https://back-api-bondi.vercel.app/api/unionplatense?idParada=MO-01071" titulo="Arribos Las Flores a capital" />} />
+          <Route path="/arribosmoqsa/bera" element={<ObtenerArribosMoqsa apiUrl="https://back-api-bondi.vercel.app/api/unionplatense?idParada=MO-00352&idParada=MO-01641" titulo="Arribos Est. Berazategui" />} />
+          <Route path="/arribosmoqsa/alpargatas" element={<ObtenerArribosMoqsa apiUrl="https://back-api-bondi.vercel.app/api/unionplatense?idParada=MO-00084" titulo="Arribos Alpargatas" />} />
+          <Route path="/arribosmoqsa/ducilocap" element={<ObtenerArribosMoqsa apiUrl="https://back-api-bondi.vercel.app/api/unionplatense?idParada=MO-00544" titulo="Arribos Ducilo a Capital" />} />
+          <Route path="/arribosmoqsa/ducilobera" element={<ObtenerArribosMoqsa apiUrl="https://back-api-bondi.vercel.app/api/unionplatense?idParada=MO-00781" titulo="Arribos Ducilo a Bera" />} />
+          <Route path="/arribosmoqsa/debenedetti" element={<ObtenerArribosMoqsa apiUrl="https://back-api-bondi.vercel.app/api/unionplatense?idParada=MO-01328" titulo="Arribos Debenedetti" />} />
+          <Route path="/arribosmoqsa/parada/:idParada" element={<ObtenerArribosMoqsa apiUrl="https://back-api-bondi.vercel.app/api/unionplatense?idParada=" titulo="Arribos" />}/>
         </Routes>
       </Router>
     </main>
