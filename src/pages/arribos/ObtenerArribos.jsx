@@ -69,7 +69,7 @@ export default function ObtenerArribos({ apiUrl, titulo }) {
       <div className="max-w-4xl mx-auto p-8">
         <h1 className="text-3xl font-bold text-gray-800 mb-6 text-center">{titulo}</h1>
 
-        <div className="flex justify-center gap-8 my-8">
+        <div className="flex justify-center gap-2 my-2">
           <button
             className="bg-[#FFC421] hover:bg-[#FFD95E] text-white font-semibold py-2 px-6 rounded-lg shadow transition duration-300"
             onClick={() => navigate('/arribos')}

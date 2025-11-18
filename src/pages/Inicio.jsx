@@ -9,6 +9,10 @@ export default function Inicio() {
     <div className="min-h-screen bg-[#F5F5F5] flex items-center justify-center">
       <div className="min-h-screen bg-[#F5F5F5] flex items-center justify-center px-4">
         <div className="flex flex-col items-center text-center gap-6">
+          
+          <h1 className="text-5xl font-extrabold text-gray-900">
+            Cuando viene
+          </h1>
           <h1 className="text-2xl font-bold text-gray-800">
             Horarios de colectivos
           </h1>
