@@ -99,7 +99,7 @@ export default function ObtenerArribos({ apiUrl, titulo }) {
         ) : (
           <>
             {/* ✅ Filtro por ramal */}
-            <div className="mb-6">
+            <div className="m-6">
               <button
                 onClick={toggleFiltro}
                 className="flex items-center justify-between w-full text-xl font-semibold text-gray-700 mb-2"
