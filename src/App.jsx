@@ -1,5 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Inicio from './pages/Inicio';
+import 'leaflet/dist/leaflet.css';
+
 
 import HorariosProgramados from './pages/programados/HorariosProgramados';
 import HorariosCasa from './pages/programados/HorariosCasa';
@@ -21,6 +23,8 @@ import ObtenerArribos from './pages/arribos/ObtenerArribos';
 import ArribosMoqsa from './pages/moqsa/ArribosMoqsa';
 import ObtenerArribosMoqsa from './pages/moqsa/ObtenerArribosMoqsa';
 
+import Recorridos from './pages/recorridos/Recorridos';
+
 
 const App = () => {
   return (
@@ -41,6 +45,8 @@ const App = () => {
           <Route path="/registrados/llegadaCasa" element={<HorariosLlegadaReg />} />
           <Route path="/registrados/italia" element={<HorariosPzaItaliaReg />} />
           <Route path="/registrados/plazave" element={<HorariosPzaVEReg />} />
+
+          <Route path="/recorridos/" element={<Recorridos />} />
 
           <Route path="/arribos" element={<HorariosArribos />} />
           <Route path="/arribos/casa" element={<ObtenerArribos apiUrl={"https://back-api-bondi.vercel.app/api/unionplatense?idParada=LP10485"} titulo={"Casa"} />} />

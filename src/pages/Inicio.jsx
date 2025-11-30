@@ -39,6 +39,11 @@ export default function Inicio() {
                 icon: <FaClock className="text-4xl mb-2 text-white" />,
                 path: '/programados',
               },
+              {
+                label: 'Recorridos',
+                icon: <FaClock className="text-4xl mb-2 text-white" />,
+                path: '/recorridos',
+              },
             ].map(({ label, icon, path }, index) => {
               // 🎨 Si el label es "Arribos MOQSA", usamos verde
               const baseClasses =
