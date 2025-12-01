@@ -88,7 +88,7 @@ export default function ObtenerArribosMoqsa({ apiUrl, titulo }) {
             className="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-6 rounded-lg shadow flex items-center gap-2 transition duration-300"
             onClick={fetchHorarios}
           >
-            <FaSync /> Refrescar
+            <FaSync /> Actualizar
           </button>
         </div>
 

@@ -89,7 +89,7 @@ export default function ObtenerArribos({ apiUrl, titulo }) {
             className="bg-[#FFC421] hover:bg-[#FFD95E] text-white font-semibold py-2 px-6 rounded-lg shadow flex items-center gap-2 transition duration-300"
             onClick={fetchHorarios}
           >
-            <FaSync /> Refrescar
+            <FaSync /> Actualizar
           </button>
         </div>
 
