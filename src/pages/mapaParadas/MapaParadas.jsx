@@ -102,13 +102,21 @@ export default function MapaParadas() {
   }, [selectedParada]);
 
   useEffect(() => {
-    const nuevosNombres = [...new Set(horarios.map(h => (h.descripcionBandera || "").trim()))];
+    const nuevosNombres = [...new Set(horarios.map(
+      h =>(/\[.*\]/.test(h.descripcionBandera)? h.descripcionBandera : h.descripcionLinea).trim()
+    ))];
     setSeleccionados(nuevosNombres);
   }, [horarios]);
 
 
-  const nombresUnicos = [...new Set(horarios.map(h => (h.descripcionBandera || "").trim()))];
-  const horariosFiltrados = horarios.filter(h => seleccionados.includes((h.descripcionBandera || "").trim()));
+  const nombresUnicos = [...new Set(horarios.map(
+      h =>(/\[.*\]/.test(h.descripcionBandera)? h.descripcionBandera : h.descripcionLinea).trim()
+    ))];
+  const horariosFiltrados = horarios.filter(h =>
+    seleccionados.includes(h.descripcionBandera?.trim()) ||
+    seleccionados.includes(h.descripcionLinea?.trim())
+  );
+
 
   const paradaSeleccionada = paradas.find(p => p.identificador === selectedParada);
 
@@ -117,7 +125,7 @@ export default function MapaParadas() {
       {/* 🗺️ Mapa */}
       <MapContainer center={[-34.92, -57.95]} zoom={13} style={{ height: "50vh", width: "100%" }}>
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" attribution="&copy; OpenStreetMap contributors" />
-        <MarkerClusterGroup chunkedLoading maxClusterRadius={40} disableClusteringAtZoom={14}>
+        <MarkerClusterGroup chunkedLoading maxClusterRadius={70} disableClusteringAtZoom={16}>
           {paradas.map((p, i) => (
             <Marker
               key={i}
