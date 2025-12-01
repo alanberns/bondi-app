@@ -6,6 +6,7 @@ import { FaChevronDown, FaSync } from "react-icons/fa";
 import Spinner from "../../components/Spinner";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
+import { useNavigate } from "react-router-dom";
 
 const busIcon = L.divIcon({
   html: `
@@ -65,6 +66,7 @@ export default function MapaParadas() {
   const [loading, setLoading] = useState(false);
   const [seleccionados, setSeleccionados] = useState([]);
   const [mostrarFiltro, setMostrarFiltro] = useState(false);
+  const navigate = useNavigate();
 
   const apiUrl = "https://back-api-bondi.vercel.app/api/unionplatense?idParada=";
 
@@ -144,11 +146,12 @@ export default function MapaParadas() {
               icon={busIcon}
             >
               <Tooltip permanent direction="top">
-                <strong>{h.descripcionLinea}</strong>
-                <br />
-                {h.descripcionBandera}
+                <strong>{h.descripcionLinea} </strong> 
+                {/\[.*\]/.test(h.descripcionBandera)? h.descripcionBandera : h.descripcionCortaBandera}
                 <br />
                 {h.tiempoRestanteArribo}
+                <br />
+                Coche: {h.identificadorCoche}
               </Tooltip>
             </Marker>
           ))}
@@ -165,7 +168,7 @@ export default function MapaParadas() {
           <div className="flex justify-center gap-2 my-2">
             <button
               className="bg-[#FFC421] hover:bg-[#FFD95E] text-white font-semibold py-2 px-6 rounded-lg shadow transition duration-300"
-              onClick={() => setSelectedParada(null)}
+              onClick={() => navigate('/')}
             >
               Inicio
             </button>
@@ -239,7 +242,11 @@ export default function MapaParadas() {
                   {horariosFiltrados.map((item, index) => (
                     <div key={index} className="bg-white p-3 rounded-md shadow border-l-8 border-l-blue-500">
                       <p className="text-sm font-semibold text-gray-800 mb-1 truncate">
-                        {item.descripcionBandera} - ({item.descripcionCortaBandera})
+                        {/\[.*\]/.test(item.descripcionBandera)? (
+                          <p>{item.descripcionBandera} - ({item.descripcionCortaBandera})</p>
+                        ) : (
+                          <p>{item.descripcionLinea} {item.descripcionCortaBandera} - ({item.descripcionBandera})</p>
+                        )}
                       </p>
                       <p className="text-lg font-bold text-gray-600">{item.tiempoRestanteArribo}</p>
                       <p className="text-xs text-gray-700 mt-1">

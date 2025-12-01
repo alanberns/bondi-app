@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaClock, FaRegEdit, FaBus } from 'react-icons/fa';
+import { FaClock, FaRegEdit, FaBus, FaMap, FaRoute } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 
 export default function Inicio() {
@@ -41,12 +41,12 @@ export default function Inicio() {
               },
               {
                 label: 'Recorridos',
-                icon: <FaClock className="text-4xl mb-2 text-white" />,
+                icon: <FaRoute className="text-4xl mb-2 text-white" />,
                 path: '/recorridos',
               },
               {
                 label: 'Paradas mapa',
-                icon: <FaClock className="text-4xl mb-2 text-white" />,
+                icon: <FaMap className="text-4xl mb-2 text-white" />,
                 path: '/mapaparadas',
               },
             ].map(({ label, icon, path }, index) => {
