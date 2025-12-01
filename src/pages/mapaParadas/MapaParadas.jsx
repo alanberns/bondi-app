@@ -1,10 +1,40 @@
 import { useEffect, useState } from "react";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import MarkerClusterGroup from "react-leaflet-cluster";
 import Papa from "papaparse";
 import { FaChevronDown, FaSync } from "react-icons/fa";
 import Spinner from "../../components/Spinner";
 import "leaflet/dist/leaflet.css";
+import L from "leaflet";
+
+const redIcon = new L.Icon({
+  iconUrl: "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png",
+  shadowUrl: "https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png",
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shadowSize: [41, 41],
+});
+
+const blueIcon = new L.Icon({
+  iconUrl: "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-blue.png",
+  shadowUrl: "https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png",
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shadowSize: [41, 41],
+});
+
+// Componente auxiliar para centrar el mapa
+function FlyToParada({ parada }) {
+  const map = useMap();
+  useEffect(() => {
+    if (parada) {
+      map.flyTo([parseFloat(parada.latitud), parseFloat(parada.longitud)], 15);
+    }
+  }, [parada, map]);
+  return null;
+}
 
 export default function MapaParadas() {
   const [paradas, setParadas] = useState([]);
@@ -35,10 +65,6 @@ export default function MapaParadas() {
       const arribos = data.arribos || [];
       setHorarios(arribos);
 
-      const nombresUnicos = [...new Set(arribos.map(h => (h.descripcionBandera || "").trim()))];
-      if (seleccionados.length === 0) {
-        setSeleccionados(nombresUnicos);
-      }
     } catch (err) {
       console.error("Error al obtener horarios:", err);
     } finally {
@@ -51,30 +77,46 @@ export default function MapaParadas() {
     fetchHorarios();
   }, [selectedParada]);
 
+  useEffect(() => {
+    const nuevosNombres = [...new Set(horarios.map(h => (h.descripcionBandera || "").trim()))];
+    setSeleccionados(nuevosNombres);
+  }, [horarios]);
+
+
   const nombresUnicos = [...new Set(horarios.map(h => (h.descripcionBandera || "").trim()))];
   const horariosFiltrados = horarios.filter(h => seleccionados.includes((h.descripcionBandera || "").trim()));
+
+  const paradaSeleccionada = paradas.find(p => p.identificador === selectedParada);
 
   return (
     <div className="min-h-screen bg-[#FCE677]">
       {/* 🗺️ Mapa */}
       <MapContainer center={[-34.92, -57.95]} zoom={13} style={{ height: "50vh", width: "100%" }}>
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" attribution="&copy; OpenStreetMap contributors" />
-        <MarkerClusterGroup chunkedLoading>
+        <MarkerClusterGroup chunkedLoading maxClusterRadius={40} disableClusteringAtZoom={14}>
           {paradas.map((p, i) => (
-            <Marker key={i} position={[parseFloat(p.latitud), parseFloat(p.longitud)]}>
-              <Popup>
+            <Marker
+              key={i}
+              position={[parseFloat(p.latitud), parseFloat(p.longitud)]}
+              icon={selectedParada === p.identificador ? redIcon : blueIcon}
+            >
+              <Popup autoOpen={selectedParada === p.identificador}>
                 <strong>{p.identificador}</strong>
                 <br />
-                <button
-                  className="bg-[#FFC421] hover:bg-[#FFD95E] text-white px-2 py-1 rounded mt-2"
-                  onClick={() => setSelectedParada(p.identificador)}
-                >
-                  Ver arribos
-                </button>
+                <div className="flex justify-center mt-2">
+                  <button
+                    className="bg-[#FFC421] hover:bg-[#FFD95E] text-white px-2 py-1 rounded"
+                    onClick={() => setSelectedParada(p.identificador)}
+                  >
+                    Ver arribos
+                  </button>
+                </div>
               </Popup>
             </Marker>
           ))}
         </MarkerClusterGroup>
+
+        <FlyToParada parada={paradaSeleccionada} />
       </MapContainer>
 
       {/* 🚌 Arribos debajo del mapa */}
@@ -114,22 +156,38 @@ export default function MapaParadas() {
                   </span>
                 </button>
                 {mostrarFiltro && (
-                  <div className="flex flex-wrap gap-4">
-                    {nombresUnicos.map((bandera, i) => (
-                      <label key={i} className="flex items-center space-x-2 bg-white px-4 py-2 rounded-lg shadow border border-gray-300">
-                        <input
-                          type="checkbox"
-                          checked={seleccionados.includes(bandera)}
-                          onChange={() =>
-                            setSeleccionados(prev =>
-                              prev.includes(bandera) ? prev.filter(n => n !== bandera) : [...prev, bandera]
-                            )
-                          }
-                        />
-                        <span className="text-gray-800">{bandera}</span>
-                      </label>
-                    ))}
-                  </div>
+                  <>
+                    <div className="flex gap-4 mb-4">
+                      <button
+                        onClick={() => setSeleccionados(nombresUnicos)}
+                        className="bg-[#FFC421] hover:bg-[#FFD95E] text-white font-semibold py-2 px-6 rounded-lg shadow flex items-center gap-2 transition duration-300"
+                      >
+                        Seleccionar todos
+                      </button>
+                      <button
+                        onClick={() => setSeleccionados([])}
+                        className="bg-[#FFC421] hover:bg-[#FFD95E] text-white font-semibold py-2 px-6 rounded-lg shadow flex items-center gap-2 transition duration-300"
+                      >
+                        Deseleccionar todos
+                      </button>
+                    </div>
+                    <div className="flex flex-wrap gap-4">
+                      {nombresUnicos.map((bandera, i) => (
+                        <label key={i} className="flex items-center space-x-2 bg-white px-4 py-2 rounded-lg shadow border border-gray-300">
+                          <input
+                            type="checkbox"
+                            checked={seleccionados.includes(bandera)}
+                            onChange={() =>
+                              setSeleccionados(prev =>
+                                prev.includes(bandera) ? prev.filter(n => n !== bandera) : [...prev, bandera]
+                              )
+                            }
+                          />
+                          <span className="text-gray-800">{bandera}</span>
+                        </label>
+                      ))}
+                    </div>
+                  </>
                 )}
               </div>
 
