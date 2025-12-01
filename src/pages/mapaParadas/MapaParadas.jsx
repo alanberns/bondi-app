@@ -123,7 +123,7 @@ export default function MapaParadas() {
   return (
     <div className="min-h-screen bg-[#FCE677]">
       {/* 🗺️ Mapa */}
-      <MapContainer center={[-34.92, -57.95]} zoom={13} style={{ height: "50vh", width: "100%" }}>
+      <MapContainer center={[-34.92, -57.95]} zoom={13} style={{ height: "80vh", width: "100%" }}>
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" attribution="&copy; OpenStreetMap contributors" />
         <MarkerClusterGroup chunkedLoading maxClusterRadius={70} disableClusteringAtZoom={16}>
           {paradas.map((p, i) => (
@@ -146,24 +146,24 @@ export default function MapaParadas() {
               </Popup>
             </Marker>
           ))}
-
-          {horariosFiltrados.map((h, i) => (
-            <Marker
-              key={`arribo-${i}`}
-              position={[parseFloat(h.latitud), parseFloat(h.longitud)]}
-              icon={busIcon}
-            >
-              <Tooltip permanent direction="top">
-                <strong>{h.descripcionLinea} </strong> 
-                {/\[.*\]/.test(h.descripcionBandera)? h.descripcionBandera : h.descripcionCortaBandera}
-                <br />
-                {h.tiempoRestanteArribo}
-                <br />
-                Coche: {h.identificadorCoche}
-              </Tooltip>
-            </Marker>
-          ))}
         </MarkerClusterGroup>
+        
+        {horariosFiltrados.map((h, i) => (
+          <Marker
+            key={`arribo-${i}`}
+            position={[parseFloat(h.latitud), parseFloat(h.longitud)]}
+            icon={busIcon}
+          >
+            <Tooltip permanent direction="top">
+              <strong>{h.descripcionLinea} </strong> 
+              {/\[.*\]/.test(h.descripcionBandera)? h.descripcionBandera : h.descripcionCortaBandera}
+              <br />
+              {h.tiempoRestanteArribo}
+              <br />
+              Coche: {h.identificadorCoche}
+            </Tooltip>
+          </Marker>
+        ))}
 
         <FlyToParada parada={paradaSeleccionada} />
       </MapContainer>
