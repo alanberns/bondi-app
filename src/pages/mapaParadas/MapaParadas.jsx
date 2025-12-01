@@ -125,7 +125,7 @@ export default function MapaParadas() {
               icon={selectedParada === p.identificador ? redIcon : blueIcon}
             >
               <Popup autoOpen={selectedParada === p.identificador}>
-                <strong>{p.identificador}</strong>
+                <strong>{p.identificador.replaceAll("&idParada=", ", ")}</strong>
                 <br />
                 <div className="flex justify-center mt-2">
                   <button

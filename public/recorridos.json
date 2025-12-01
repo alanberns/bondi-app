@@ -14511,6 +14511,698 @@
       }
     ]
   },
+    {
+    "linea": "414",
+    "ramal": "FLORENCIO VARELA",
+    "puntos": [
+      {
+        "latitud": -34.902721,
+        "longitud": -57.952325
+      },
+      {
+        "latitud": -34.902539,
+        "longitud": -57.952562
+      },
+      {
+        "latitud": -34.905182,
+        "longitud": -57.955435
+      },
+      {
+        "latitud": -34.905213,
+        "longitud": -57.955658
+      },
+      {
+        "latitud": -34.909828,
+        "longitud": -57.955385
+      },
+      {
+        "latitud": -34.910143,
+        "longitud": -57.955957
+      },
+      {
+        "latitud": -34.910908,
+        "longitud": -57.956232
+      },
+      {
+        "latitud": -34.911271,
+        "longitud": -57.955988
+      },
+      {
+        "latitud": -34.911538,
+        "longitud": -57.956384
+      },
+      {
+        "latitud": -34.912884,
+        "longitud": -57.957689
+      },
+      {
+        "latitud": -34.915689,
+        "longitud": -57.960785
+      },
+      {
+        "latitud": -34.915817,
+        "longitud": -57.960989
+      },
+      {
+        "latitud": -34.915852,
+        "longitud": -57.962078
+      },
+      {
+        "latitud": -34.901448,
+        "longitud": -57.981493
+      },
+      {
+        "latitud": -34.899176,
+        "longitud": -57.984659
+      },
+      {
+        "latitud": -34.898582,
+        "longitud": -57.985378
+      },
+      {
+        "latitud": -34.897671,
+        "longitud": -57.986059
+      },
+      {
+        "latitud": -34.897399,
+        "longitud": -57.986515
+      },
+      {
+        "latitud": -34.896955,
+        "longitud": -57.989355
+      },
+      {
+        "latitud": -34.896705,
+        "longitud": -57.990448
+      },
+      {
+        "latitud": -34.895998,
+        "longitud": -57.992383
+      },
+      {
+        "latitud": -34.889676,
+        "longitud": -58.019319
+      },
+      {
+        "latitud": -34.889447,
+        "longitud": -58.020134
+      },
+      {
+        "latitud": -34.885821,
+        "longitud": -58.035595
+      },
+      {
+        "latitud": -34.885346,
+        "longitud": -58.037934
+      },
+      {
+        "latitud": -34.881708,
+        "longitud": -58.053478
+      },
+      {
+        "latitud": -34.874336,
+        "longitud": -58.08479
+      },
+      {
+        "latitud": -34.873843,
+        "longitud": -58.086464
+      },
+      {
+        "latitud": -34.870692,
+        "longitud": -58.094467
+      },
+      {
+        "latitud": -34.869283,
+        "longitud": -58.097557
+      },
+      {
+        "latitud": -34.849579,
+        "longitud": -58.144916
+      },
+      {
+        "latitud": -34.848259,
+        "longitud": -58.147552
+      },
+      {
+        "latitud": -34.845005,
+        "longitud": -58.152828
+      },
+      {
+        "latitud": -34.844486,
+        "longitud": -58.153965
+      },
+      {
+        "latitud": -34.843938,
+        "longitud": -58.154319
+      },
+      {
+        "latitud": -34.843798,
+        "longitud": -58.156129
+      },
+      {
+        "latitud": -34.84356,
+        "longitud": -58.157728
+      },
+      {
+        "latitud": -34.842319,
+        "longitud": -58.160775
+      },
+      {
+        "latitud": -34.839269,
+        "longitud": -58.170866
+      },
+      {
+        "latitud": -34.839163,
+        "longitud": -58.172829
+      },
+      {
+        "latitud": -34.840825,
+        "longitud": -58.187819
+      },
+      {
+        "latitud": -34.840802,
+        "longitud": -58.188151
+      },
+      {
+        "latitud": -34.840578,
+        "longitud": -58.188507
+      },
+      {
+        "latitud": -34.840256,
+        "longitud": -58.188802
+      },
+      {
+        "latitud": -34.840194,
+        "longitud": -58.189188
+      },
+      {
+        "latitud": -34.840264,
+        "longitud": -58.189523
+      },
+      {
+        "latitud": -34.840488,
+        "longitud": -58.189834
+      },
+      {
+        "latitud": -34.840585,
+        "longitud": -58.19014
+      },
+      {
+        "latitud": -34.840203,
+        "longitud": -58.191168
+      },
+      {
+        "latitud": -34.826431,
+        "longitud": -58.223493
+      },
+      {
+        "latitud": -34.825506,
+        "longitud": -58.225053
+      },
+      {
+        "latitud": -34.8238,
+        "longitud": -58.226281
+      },
+      {
+        "latitud": -34.822527,
+        "longitud": -58.226565
+      },
+      {
+        "latitud": -34.818249,
+        "longitud": -58.226137
+      },
+      {
+        "latitud": -34.816902,
+        "longitud": -58.226491
+      },
+      {
+        "latitud": -34.800403,
+        "longitud": -58.238893
+      },
+      {
+        "latitud": -34.799855,
+        "longitud": -58.23943
+      },
+      {
+        "latitud": -34.799709,
+        "longitud": -58.239247
+      },
+      {
+        "latitud": -34.799608,
+        "longitud": -58.239288
+      },
+      {
+        "latitud": -34.799443,
+        "longitud": -58.239497
+      },
+      {
+        "latitud": -34.799666,
+        "longitud": -58.239796
+      },
+      {
+        "latitud": -34.799796,
+        "longitud": -58.239659
+      },
+      {
+        "latitud": -34.799959,
+        "longitud": -58.239828
+      },
+      {
+        "latitud": -34.800169,
+        "longitud": -58.239666
+      },
+      {
+        "latitud": -34.801683,
+        "longitud": -58.242634
+      },
+      {
+        "latitud": -34.802258,
+        "longitud": -58.242242
+      },
+      {
+        "latitud": -34.807849,
+        "longitud": -58.253092
+      },
+      {
+        "latitud": -34.808347,
+        "longitud": -58.253905
+      },
+      {
+        "latitud": -34.810493,
+        "longitud": -58.258098
+      },
+      {
+        "latitud": -34.810437,
+        "longitud": -58.259552
+      },
+      {
+        "latitud": -34.810802,
+        "longitud": -58.269838
+      },
+      {
+        "latitud": -34.810603,
+        "longitud": -58.26986
+      },
+      {
+        "latitud": -34.810626,
+        "longitud": -58.270787
+      }
+    ]
+  },
+  {
+    "linea": "414",
+    "ramal": "LA PLATA",
+    "puntos": [
+      {
+        "latitud": -34.810718,
+        "longitud": -58.273677
+      },
+      {
+        "latitud": -34.810846,
+        "longitud": -58.276139
+      },
+      {
+        "latitud": -34.809016,
+        "longitud": -58.276268
+      },
+      {
+        "latitud": -34.807948,
+        "longitud": -58.276413
+      },
+      {
+        "latitud": -34.807736,
+        "longitud": -58.273015
+      },
+      {
+        "latitud": -34.810709,
+        "longitud": -58.27285
+      },
+      {
+        "latitud": -34.810625,
+        "longitud": -58.270468
+      },
+      {
+        "latitud": -34.810762,
+        "longitud": -58.270195
+      },
+      {
+        "latitud": -34.810793,
+        "longitud": -58.269814
+      },
+      {
+        "latitud": -34.810439,
+        "longitud": -58.25961
+      },
+      {
+        "latitud": -34.810483,
+        "longitud": -58.258127
+      },
+      {
+        "latitud": -34.800531,
+        "longitud": -58.238889
+      },
+      {
+        "latitud": -34.801288,
+        "longitud": -58.238261
+      },
+      {
+        "latitud": -34.816472,
+        "longitud": -58.226723
+      },
+      {
+        "latitud": -34.817428,
+        "longitud": -58.226297
+      },
+      {
+        "latitud": -34.818767,
+        "longitud": -58.226158
+      },
+      {
+        "latitud": -34.821507,
+        "longitud": -58.226524
+      },
+      {
+        "latitud": -34.822632,
+        "longitud": -58.226567
+      },
+      {
+        "latitud": -34.823724,
+        "longitud": -58.22632
+      },
+      {
+        "latitud": -34.824587,
+        "longitud": -58.22587
+      },
+      {
+        "latitud": -34.825255,
+        "longitud": -58.225329
+      },
+      {
+        "latitud": -34.825506,
+        "longitud": -58.225053
+      },
+      {
+        "latitud": -34.826278,
+        "longitud": -58.223907
+      },
+      {
+        "latitud": -34.840584,
+        "longitud": -58.190401
+      },
+      {
+        "latitud": -34.840928,
+        "longitud": -58.189905
+      },
+      {
+        "latitud": -34.841261,
+        "longitud": -58.189718
+      },
+      {
+        "latitud": -34.841454,
+        "longitud": -58.189329
+      },
+      {
+        "latitud": -34.841426,
+        "longitud": -58.189015
+      },
+      {
+        "latitud": -34.841259,
+        "longitud": -58.188589
+      },
+      {
+        "latitud": -34.841107,
+        "longitud": -58.188441
+      },
+      {
+        "latitud": -34.840935,
+        "longitud": -58.188039
+      },
+      {
+        "latitud": -34.840955,
+        "longitud": -58.187644
+      },
+      {
+        "latitud": -34.841067,
+        "longitud": -58.186424
+      },
+      {
+        "latitud": -34.83958,
+        "longitud": -58.173072
+      },
+      {
+        "latitud": -34.839686,
+        "longitud": -58.171199
+      },
+      {
+        "latitud": -34.839932,
+        "longitud": -58.170008
+      },
+      {
+        "latitud": -34.841535,
+        "longitud": -58.16499
+      },
+      {
+        "latitud": -34.842831,
+        "longitud": -58.160402
+      },
+      {
+        "latitud": -34.843424,
+        "longitud": -58.158689
+      },
+      {
+        "latitud": -34.844181,
+        "longitud": -58.15736
+      },
+      {
+        "latitud": -34.844304,
+        "longitud": -58.157038
+      },
+      {
+        "latitud": -34.844621,
+        "longitud": -58.154173
+      },
+      {
+        "latitud": -34.844819,
+        "longitud": -58.153449
+      },
+      {
+        "latitud": -34.845149,
+        "longitud": -58.152521
+      },
+      {
+        "latitud": -34.847538,
+        "longitud": -58.148707
+      },
+      {
+        "latitud": -34.848938,
+        "longitud": -58.146208
+      },
+      {
+        "latitud": -34.849765,
+        "longitud": -58.144502
+      },
+      {
+        "latitud": -34.868782,
+        "longitud": -58.098851
+      },
+      {
+        "latitud": -34.869002,
+        "longitud": -58.098207
+      },
+      {
+        "latitud": -34.869283,
+        "longitud": -58.097557
+      },
+      {
+        "latitud": -34.870955,
+        "longitud": -58.093796
+      },
+      {
+        "latitud": -34.87309,
+        "longitud": -58.088549
+      },
+      {
+        "latitud": -34.874287,
+        "longitud": -58.084976
+      },
+      {
+        "latitud": -34.881708,
+        "longitud": -58.053478
+      },
+      {
+        "latitud": -34.884991,
+        "longitud": -58.039145
+      },
+      {
+        "latitud": -34.885352,
+        "longitud": -58.037917
+      },
+      {
+        "latitud": -34.886136,
+        "longitud": -58.03428
+      },
+      {
+        "latitud": -34.886488,
+        "longitud": -58.033067
+      },
+      {
+        "latitud": -34.889453,
+        "longitud": -58.02012
+      },
+      {
+        "latitud": -34.889607,
+        "longitud": -58.019661
+      },
+      {
+        "latitud": -34.889676,
+        "longitud": -58.019319
+      },
+      {
+        "latitud": -34.889947,
+        "longitud": -58.018112
+      },
+      {
+        "latitud": -34.890228,
+        "longitud": -58.017082
+      },
+      {
+        "latitud": -34.893181,
+        "longitud": -58.004367
+      },
+      {
+        "latitud": -34.893414,
+        "longitud": -58.004243
+      },
+      {
+        "latitud": -34.894127,
+        "longitud": -58.004989
+      },
+      {
+        "latitud": -34.896691,
+        "longitud": -58.001633
+      },
+      {
+        "latitud": -34.894636,
+        "longitud": -57.999348
+      },
+      {
+        "latitud": -34.894438,
+        "longitud": -57.999058
+      },
+      {
+        "latitud": -34.896097,
+        "longitud": -57.992163
+      },
+      {
+        "latitud": -34.896862,
+        "longitud": -57.990456
+      },
+      {
+        "latitud": -34.897241,
+        "longitud": -57.988562
+      },
+      {
+        "latitud": -34.897751,
+        "longitud": -57.986733
+      },
+      {
+        "latitud": -34.899212,
+        "longitud": -57.984872
+      },
+      {
+        "latitud": -34.899414,
+        "longitud": -57.984453
+      },
+      {
+        "latitud": -34.901448,
+        "longitud": -57.981493
+      },
+      {
+        "latitud": -34.905653,
+        "longitud": -57.97603
+      },
+      {
+        "latitud": -34.905863,
+        "longitud": -57.975702
+      },
+      {
+        "latitud": -34.906731,
+        "longitud": -57.976547
+      },
+      {
+        "latitud": -34.907012,
+        "longitud": -57.976365
+      },
+      {
+        "latitud": -34.907118,
+        "longitud": -57.976107
+      },
+      {
+        "latitud": -34.906241,
+        "longitud": -57.97505
+      },
+      {
+        "latitud": -34.915939,
+        "longitud": -57.962111
+      },
+      {
+        "latitud": -34.916874,
+        "longitud": -57.961979
+      },
+      {
+        "latitud": -34.916839,
+        "longitud": -57.960769
+      },
+      {
+        "latitud": -34.915933,
+        "longitud": -57.960837
+      },
+      {
+        "latitud": -34.91574,
+        "longitud": -57.960702
+      },
+      {
+        "latitud": -34.912637,
+        "longitud": -57.957309
+      },
+      {
+        "latitud": -34.911598,
+        "longitud": -57.95629
+      },
+      {
+        "latitud": -34.911352,
+        "longitud": -57.955871
+      },
+      {
+        "latitud": -34.911479,
+        "longitud": -57.955228
+      },
+      {
+        "latitud": -34.911259,
+        "longitud": -57.954616
+      },
+      {
+        "latitud": -34.910595,
+        "longitud": -57.954328
+      },
+      {
+        "latitud": -34.910023,
+        "longitud": -57.954542
+      },
+      {
+        "latitud": -34.90983,
+        "longitud": -57.955288
+      },
+      {
+        "latitud": -34.907035,
+        "longitud": -57.95543
+      },
+      {
+        "latitud": -34.905619,
+        "longitud": -57.955513
+      }
+    ]
+  },
   {
     "linea": "195",
     "ramal": "LA PLATA X AUTOPISTA 13y32",
