@@ -1,11 +1,33 @@
 import { useEffect, useState } from "react";
-import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
+import { MapContainer, TileLayer, Marker, Popup, useMap, Tooltip } from "react-leaflet";
 import MarkerClusterGroup from "react-leaflet-cluster";
 import Papa from "papaparse";
 import { FaChevronDown, FaSync } from "react-icons/fa";
 import Spinner from "../../components/Spinner";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
+
+const busIcon = L.divIcon({
+  html: `
+    <div style="
+      background:white;
+      border:3px solid black;
+      border-radius:50%;
+      width:50px;
+      height:50px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:white;
+      font-size:24px;
+    ">
+      🚍
+    </div>
+  `,
+  className: "custom-bus-icon",
+  iconSize: [50, 50],
+  iconAnchor: [25, 50],
+});
 
 const redIcon = new L.Icon({
   iconUrl: "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png",
@@ -112,6 +134,22 @@ export default function MapaParadas() {
                   </button>
                 </div>
               </Popup>
+            </Marker>
+          ))}
+
+          {horariosFiltrados.map((h, i) => (
+            <Marker
+              key={`arribo-${i}`}
+              position={[parseFloat(h.latitud), parseFloat(h.longitud)]}
+              icon={busIcon}
+            >
+              <Tooltip permanent direction="top">
+                <strong>{h.descripcionLinea}</strong>
+                <br />
+                {h.descripcionBandera}
+                <br />
+                {h.tiempoRestanteArribo}
+              </Tooltip>
             </Marker>
           ))}
         </MarkerClusterGroup>
