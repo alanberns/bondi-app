@@ -52,7 +52,7 @@ const blueIcon = new L.Icon({
 function FlyToParada({ parada }) {
   const map = useMap();
   useEffect(() => {
-    if (parada) {
+    if (false) {
       map.flyTo([parseFloat(parada.latitud), parseFloat(parada.longitud)], 15);
     }
   }, [parada, map]);
