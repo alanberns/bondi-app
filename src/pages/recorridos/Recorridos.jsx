@@ -11,7 +11,7 @@ function Recorridos() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch("/rec.json")
+        fetch("/recorridos.json")
             .then(res => res.json())
             .then(json => setData(json));
     }, []);
@@ -50,7 +50,7 @@ function Recorridos() {
                 </button>
             </div>
 
-            <div className="mt-6 w-full max-w-6xl flex flex-row gap-4">
+            <div className="w-full max-w-md space-y-4">
                 {Object.entries(lineas).map(([linea, ramales]) => (
                     <div key={linea} className="bg-white rounded-lg shadow-md">
                         {/* Botón horizontal estilo arribos */}
@@ -87,13 +87,8 @@ function Recorridos() {
                         )}
                     </div>
                 ))}
-
-            {mostrarRecorridos && (
-                <div className="mt-6 w-full max-w-4xl">
-                    <MostrarRecorrido recorridos={seleccionados} />
-                </div>
-            )}
             </div>
+
             {/* Botón mostrar recorridos */}
             <button
                 onClick={() => setMostrarRecorridos(true)}
@@ -102,6 +97,11 @@ function Recorridos() {
                 Mostrar recorridos seleccionados
             </button>
 
+            {mostrarRecorridos && (
+                <div className="mt-6 w-full max-w-4xl">
+                    <MostrarRecorrido recorridos={seleccionados} />
+                </div>
+            )}
         </div>
     );
 }
