@@ -148,7 +148,7 @@ useEffect(() => {
       {/* 🗺️ Mapa */}
       <MapContainer center={[-34.92, -57.95]} zoom={13} style={{ height: "80vh", width: "100%" }}>
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" attribution="&copy; OpenStreetMap contributors" />
-        <MarkerClusterGroup chunkedLoading maxClusterRadius={50} disableClusteringAtZoom={14}>
+        <MarkerClusterGroup chunkedLoading maxClusterRadius={50} disableClusteringAtZoom={15}>
           {paradas.map((p, i) => (
             <Marker
               key={i}
