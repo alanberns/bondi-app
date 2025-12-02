@@ -63,7 +63,7 @@ function FlyToHorario({ horario }) {
   const map = useMap();
   useEffect(() => {
     if (horario) {
-      map.flyTo([parseFloat(horario.latitud), parseFloat(horario.longitud)], 14);
+      map.flyTo([parseFloat(horario.latitud), parseFloat(horario.longitud)], 13);
     }
   }, [horario, map]);
   return null;
@@ -148,7 +148,7 @@ useEffect(() => {
       {/* 🗺️ Mapa */}
       <MapContainer center={[-34.92, -57.95]} zoom={13} style={{ height: "80vh", width: "100%" }}>
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" attribution="&copy; OpenStreetMap contributors" />
-        <MarkerClusterGroup chunkedLoading maxClusterRadius={70} disableClusteringAtZoom={16}>
+        <MarkerClusterGroup chunkedLoading maxClusterRadius={50} disableClusteringAtZoom={14}>
           {paradas.map((p, i) => (
             <Marker
               key={i}
@@ -170,6 +170,30 @@ useEffect(() => {
             </Marker>
           ))}
         </MarkerClusterGroup>
+
+        {/* El marcador seleccionado, fuera del cluster */}
+        {selectedParada && (
+          <Marker
+            position={[
+              parseFloat(paradaSeleccionada.latitud),
+              parseFloat(paradaSeleccionada.longitud),
+            ]}
+            icon={redIcon}
+          >
+            <Popup autoOpen>
+              <strong>{paradaSeleccionada.identificador.replaceAll("&idParada=", ", ")}</strong>
+              <br />
+              <div className="flex justify-center mt-2">
+                <button
+                  className="bg-[#FFC421] hover:bg-[#FFD95E] text-white px-2 py-1 rounded"
+                  onClick={() => setSelectedParada(paradaSeleccionada.identificador)}
+                >
+                  Ver arribos
+                </button>
+              </div>
+            </Popup>
+          </Marker>
+        )}
 
         {horariosFiltrados.map((h, i) => (
           <Marker
