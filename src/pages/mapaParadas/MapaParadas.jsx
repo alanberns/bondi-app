@@ -65,6 +65,7 @@ export default function MapaParadas() {
   const [horarios, setHorarios] = useState([]);
   const [loading, setLoading] = useState(false);
   const [seleccionados, setSeleccionados] = useState([]);
+  const [nombresDisponibles, setNombresDisponibles] = useState([]);
   const [mostrarFiltro, setMostrarFiltro] = useState(false);
   const navigate = useNavigate();
 
@@ -105,7 +106,10 @@ export default function MapaParadas() {
     const nuevosNombres = [...new Set(horarios.map(
       h =>(/\[.*\]/.test(h.descripcionBandera)? h.descripcionBandera : h.descripcionLinea).trim()
     ))];
-    setSeleccionados(nuevosNombres);
+    setNombresDisponibles(nuevosNombres);
+    if (seleccionados.length === 0) {
+      setSeleccionados(nuevosNombres);
+    }
   }, [horarios]);
 
 
