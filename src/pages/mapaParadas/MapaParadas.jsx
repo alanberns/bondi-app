@@ -14,8 +14,8 @@ const busIcon = L.divIcon({
       background:white;
       border:3px solid black;
       border-radius:50%;
-      width:50px;
-      height:50px;
+      width:30px;
+      height:30px;
       display:flex;
       align-items:center;
       justify-content:center;
@@ -26,8 +26,8 @@ const busIcon = L.divIcon({
     </div>
   `,
   className: "custom-bus-icon",
-  iconSize: [50, 50],
-  iconAnchor: [25, 50],
+  iconSize: [30, 30],
+  iconAnchor: [25, 30],
 });
 
 const redIcon = new L.Icon({
@@ -120,6 +120,10 @@ export default function MapaParadas() {
 
   const paradaSeleccionada = paradas.find(p => p.identificador === selectedParada);
 
+  const truncate = (str, max = 15) =>
+  str && str.length > max ? str.substring(0, max) + "..." : str;
+
+
   return (
     <div className="min-h-screen bg-[#FCE677]">
       {/* 🗺️ Mapa */}
@@ -147,21 +151,23 @@ export default function MapaParadas() {
             </Marker>
           ))}
         </MarkerClusterGroup>
-        
+
         {horariosFiltrados.map((h, i) => (
           <Marker
             key={`arribo-${i}`}
             position={[parseFloat(h.latitud), parseFloat(h.longitud)]}
             icon={busIcon}
           >
-            <Tooltip permanent direction="top">
-              <strong>{h.descripcionLinea} </strong> 
-              {/\[.*\]/.test(h.descripcionBandera)? h.descripcionBandera : h.descripcionCortaBandera}
+          <Tooltip permanent direction="right">
+            <div style={{ fontSize: "0.85rem", lineHeight: "1.2" }}>
+              <strong>{h.descripcionLinea}</strong>{" "}
+              {truncate(/\[.*\]/.test(h.descripcionBandera) ? h.descripcionBandera : h.descripcionCortaBandera, 15)}
               <br />
-              {h.tiempoRestanteArribo}
-              <br />
-              Coche: {h.identificadorCoche}
-            </Tooltip>
+              <span style={{ fontWeight: "bold", color: "#d32f2f" }}>
+                {h.tiempoRestanteArribo}
+              </span><small>  Coche: {h.identificadorCoche}</small>
+            </div>
+          </Tooltip>
           </Marker>
         ))}
 
