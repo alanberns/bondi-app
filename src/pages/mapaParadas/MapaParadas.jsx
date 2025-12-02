@@ -59,6 +59,16 @@ function FlyToParada({ parada }) {
   return null;
 }
 
+function FlyToHorario({ horario }) {
+  const map = useMap();
+  useEffect(() => {
+    if (horario) {
+      map.flyTo([parseFloat(horario.latitud), parseFloat(horario.longitud)], 14);
+    }
+  }, [horario, map]);
+  return null;
+}
+
 export default function MapaParadas() {
   const [paradas, setParadas] = useState([]);
   const [selectedParada, setSelectedParada] = useState(null);
@@ -68,6 +78,8 @@ export default function MapaParadas() {
   const [nombresDisponibles, setNombresDisponibles] = useState([]);
   const [mostrarFiltro, setMostrarFiltro] = useState(false);
   const navigate = useNavigate();
+  const [selectedHorario, setSelectedHorario] = useState(null);
+
 
   const apiUrl = "https://back-api-bondi.vercel.app/api/unionplatense?idParada=";
 
@@ -97,20 +109,24 @@ export default function MapaParadas() {
     }
   };
 
-  // cuando cambia la parada seleccionada → fetch automático
-  useEffect(() => {
-    fetchHorarios();
-  }, [selectedParada]);
+// cuando cambia la parada seleccionada → fetch automático y reset de selección
+useEffect(() => {
+  fetchHorarios();
+  setSeleccionados([]); // vaciar selección al cambiar de parada
+}, [selectedParada]);
 
-  useEffect(() => {
-    const nuevosNombres = [...new Set(horarios.map(
-      h =>(/\[.*\]/.test(h.descripcionBandera)? h.descripcionBandera : h.descripcionLinea).trim()
-    ))];
-    setNombresDisponibles(nuevosNombres);
-    if (seleccionados.length === 0) {
-      setSeleccionados(nuevosNombres);
-    }
-  }, [horarios]);
+// cuando llegan horarios nuevos
+useEffect(() => {
+  const nuevosNombres = [...new Set(
+    horarios.map(h =>(/\[.*\]/.test(h.descripcionBandera) ? h.descripcionBandera : h.descripcionLinea).trim())
+  )];
+  setNombresDisponibles(nuevosNombres);
+
+  // si la selección está vacía (porque venís de una parada nueva), inicializar con todos
+  if (seleccionados.length === 0) {
+    setSeleccionados(nuevosNombres);
+  }
+}, [horarios]);
 
 
   const nombresUnicos = [...new Set(horarios.map(
@@ -126,7 +142,6 @@ export default function MapaParadas() {
 
   const truncate = (str, max = 15) =>
   str && str.length > max ? str.substring(0, max) + "..." : str;
-
 
   return (
     <div className="min-h-screen bg-[#FCE677]">
@@ -176,6 +191,7 @@ export default function MapaParadas() {
         ))}
 
         <FlyToParada parada={paradaSeleccionada} />
+        <FlyToHorario horario={selectedHorario} />
       </MapContainer>
 
       {/* 🚌 Arribos debajo del mapa */}
@@ -258,7 +274,7 @@ export default function MapaParadas() {
               ) : (
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {horariosFiltrados.map((item, index) => (
-                    <div key={index} className="bg-white p-3 rounded-md shadow border-l-8 border-l-blue-500">
+                    <div key={index} className="relative bg-white p-3 rounded-md shadow border-l-8 border-l-blue-500">
                       <p className="text-sm font-semibold text-gray-800 mb-1 truncate">
                         {/\[.*\]/.test(item.descripcionBandera)? (
                           <p>{item.descripcionBandera} - ({item.descripcionCortaBandera})</p>
@@ -273,6 +289,14 @@ export default function MapaParadas() {
                       <p className="text-gray-500 mt-1 text-xs">
                         Coche: {item.identificadorCoche} | Chofer: {item.identificadorChofer}
                       </p>
+                      <div className="absolute bottom-2 right-2">
+                        <button
+                          className="bg-blue-500 hover:bg-blue-600 text-white text-xs px-3 py-1 rounded shadow"
+                          onClick={() => setSelectedHorario(item)}
+                        >
+                          Ver en mapa
+                        </button>
+                      </div>
                     </div>
                   ))}
                 </div>
