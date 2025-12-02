@@ -153,7 +153,7 @@ useEffect(() => {
             <Marker
               key={i}
               position={[parseFloat(p.latitud), parseFloat(p.longitud)]}
-              icon={selectedParada === p.identificador ? redIcon : blueIcon}
+              icon={blueIcon}
             >
               <Popup autoOpen={selectedParada === p.identificador}>
                 <strong>{p.identificador.replaceAll("&idParada=", ", ")}</strong>
