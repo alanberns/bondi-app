@@ -261,13 +261,13 @@ useEffect(() => {
                         onClick={() => setSeleccionados(nombresUnicos)}
                         className="bg-[#FFC421] hover:bg-[#FFD95E] text-white font-semibold py-2 px-6 rounded-lg shadow flex items-center gap-2 transition duration-300"
                       >
-                        Seleccionar todos
+                        Todos
                       </button>
                       <button
                         onClick={() => setSeleccionados([])}
                         className="bg-[#FFC421] hover:bg-[#FFD95E] text-white font-semibold py-2 px-6 rounded-lg shadow flex items-center gap-2 transition duration-300"
                       >
-                        Deseleccionar todos
+                        Ninguno
                       </button>
                     </div>
                     <div className="flex flex-wrap gap-4">
