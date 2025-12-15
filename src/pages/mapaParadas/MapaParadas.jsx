@@ -140,7 +140,7 @@ useEffect(() => {
 
   const paradaSeleccionada = paradas.find(p => p.identificador === selectedParada);
 
-  const truncate = (str, max = 15) =>
+  const truncate = (str, max = 20) =>
   str && str.length > max ? str.substring(0, max) + "..." : str;
 
   return (
@@ -203,7 +203,7 @@ useEffect(() => {
           >
           <Tooltip permanent direction="right">
             <div style={{ fontSize: "0.85rem", lineHeight: "1.2" }}>
-              <strong>{h.descripcionLinea}</strong>{" "}
+              <strong>{h.descripcionLinea.replace("LINEA","").replace("(TALP)","")}</strong>{" "}
               {truncate(/\[.*\]/.test(h.descripcionBandera) ? h.descripcionBandera : h.descripcionCortaBandera, 15)}
               <br />
               <span style={{ fontWeight: "bold", color: "#d32f2f" }}>
