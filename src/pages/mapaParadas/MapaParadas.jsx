@@ -204,7 +204,7 @@ useEffect(() => {
           <Tooltip permanent direction="right">
             <div style={{ fontSize: "0.85rem", lineHeight: "1.2" }}>
               <strong>{h.descripcionLinea.replace("LINEA","").replace("(TALP)","")}</strong>{" "}
-              {truncate(/\[.*\]/.test(h.descripcionBandera) ? h.descripcionBandera : h.descripcionCortaBandera, 22)}
+              {truncate(/\[.*\]/.test(h.descripcionBandera) ? h.descripcionBandera.replace(`[${h.descripcionLinea.replace("LINEA","").replace("(TALP)","")}]`) : h.descripcionCortaBandera, 25)}
               <br />
               <span style={{ fontWeight: "bold", color: "#d32f2f" }}>
                 {h.tiempoRestanteArribo}
