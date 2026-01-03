@@ -38,10 +38,10 @@ export default function BotonesDescarga({ horarios, nombre }) {
 
   return (
     <div className="flex justify-center gap-8 my-8">
-      <button onClick={descargarCSV} className="bg-[#FFC421] hover:bg-[#FFD95E] text-white font-semibold py-2 px-6 rounded-lg shadow transition duration-300">
+      <button onClick={descargarCSV} className="bg-[#FFC421] hover:bg-[#FFD95E] text-white font-semibold py-2 px-6 rounded-lg shadow flex items-center gap-2 transition duration-300">
         Descargar CSV
       </button>
-      <button onClick={descargarPDF} className="bg-[#FFC421] hover:bg-[#FFD95E] text-white font-semibold py-2 px-6 rounded-lg shadow transition duration-300">
+      <button onClick={descargarPDF} className="bg-[#FFC421] hover:bg-[#FFD95E] text-white font-semibold py-2 px-6 rounded-lg shadow flex items-center gap-2 transition duration-300">
         Descargar PDF
       </button>
     </div>

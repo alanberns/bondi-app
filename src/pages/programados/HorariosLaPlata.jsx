@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
-import BotonesDescarga from "../../components/BotonesDesacarga";
+import BotonesDescarga from "../../components/BotonesDescarga";
 
 export default function HorariosLaPlata() {
   const [horarios, setHorarios] = useState([]);

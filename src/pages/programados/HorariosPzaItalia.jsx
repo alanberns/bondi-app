@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import { FaChevronDown } from 'react-icons/fa';
-import BotonesDescarga from "../../components/BotonesDesacarga";
+import BotonesDescarga from "../../components/BotonesDescarga";
 
 export default function HorariosPzaItaliaReg() {
   const [horarios, setHorarios] = useState([]);
