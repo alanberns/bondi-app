@@ -7,6 +7,8 @@ import ListaHorarios from "../../components/ListaHorarios";
 import BotonesNavegacion from "../../components/BotonesNavegacion";
 import { useHorariosApi } from "../../hooks/useHorariosApi";
 import { dentroDelRango } from "../../utils/filtros";
+import CantidadServicios from "../../components/CantidadServicios";
+import GraficoTiempoPromedio from "../../components/graficos/GraficoTiempoPromedio";
 
 export default function HorariosPzaVEReg() {
   const { horarios, loading, seleccionados, setSeleccionados } =
@@ -64,7 +66,9 @@ export default function HorariosPzaVEReg() {
         />
 
         <BotonesDescarga horarios={horariosFiltrados} nombre="PzaVillaElisa" />
+        <CantidadServicios servicios={horariosFiltrados}></CantidadServicios>
         <ListaHorarios horarios={horariosFiltrados} />
+        <GraficoTiempoPromedio servicios={horariosFiltrados} />
       </div>
     </div>
   );

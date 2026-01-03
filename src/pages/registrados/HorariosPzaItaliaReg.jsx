@@ -9,6 +9,8 @@ import BotonesNavegacion from "../../components/BotonesNavegacion";
 import { useHorarios } from "../../hooks/useHorarios";
 import { dentroDelRango } from "../../utils/filtros";
 import { obtenerDiaActual } from "../../utils/fecha";
+import GraficoTiempoPromedio from "../../components/graficos/GraficoTiempoPromedio";
+import CantidadServicios from "../../components/CantidadServicios";
 
 
 export default function HorariosPzaItaliaReg() {
@@ -71,7 +73,9 @@ export default function HorariosPzaItaliaReg() {
         />
 
         <BotonesDescarga horarios={horariosFiltrados} nombre="PzaItalia" />
+        <CantidadServicios servicios={horariosFiltrados}></CantidadServicios>
         <ListaHorarios horarios={horariosFiltrados} />
+        <GraficoTiempoPromedio servicios={horariosFiltrados} />
       </div>
     </div>
   );

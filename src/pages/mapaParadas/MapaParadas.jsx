@@ -7,6 +7,7 @@ import Spinner from "../../components/Spinner";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import { useNavigate } from "react-router-dom";
+import CantidadServicios from "../../components/CantidadServicios";
 
 const busIcon = L.divIcon({
   html: `
@@ -291,6 +292,7 @@ useEffect(() => {
               </div>
 
               {/* Lista filtrada */}
+              <CantidadServicios servicios={horariosFiltrados} ></CantidadServicios >
               {horariosFiltrados.length === 0 ? (
                 <div className="text-center text-gray-600 text-base mt-8">
                   🚫 No hay horarios que coincidan con los filtros seleccionados.

@@ -9,6 +9,9 @@ import ListaHorarios from "../../components/ListaHorarios";
 import { useHorarios } from "../../hooks/useHorarios";
 import { dentroDelRango } from "../../utils/filtros";
 import { obtenerDiaActual } from "../../utils/fecha";
+import GraficoTiempoPromedio from "../../components/graficos/GraficoTiempoPromedio";
+import CantidadServicios from "../../components/CantidadServicios";
+
 
 export default function HorariosLaPlata() {
 
@@ -67,7 +70,9 @@ export default function HorariosLaPlata() {
         />
 
         <BotonesDescarga horarios={horariosFiltrados} nombre="LaPlata" />
+        <CantidadServicios servicios={horariosFiltrados}></CantidadServicios>
         <ListaHorarios horarios={horariosFiltrados} />
+        <GraficoTiempoPromedio servicios={horariosFiltrados} />
       </div>
     </div>
   );
