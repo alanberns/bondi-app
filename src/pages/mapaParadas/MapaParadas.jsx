@@ -147,7 +147,7 @@ useEffect(() => {
   return (
     <div className="min-h-screen bg-[#FCE677]">
       {/* 🗺️ Mapa */}
-      <MapContainer center={[-34.92, -57.95]} zoom={13} style={{ height: "80vh", width: "100%" }}>
+      <MapContainer center={[-34.803382, -58.203121]} zoom={11} style={{ height: "80vh", width: "100%" }}>
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" attribution="&copy; OpenStreetMap contributors" />
         <MarkerClusterGroup chunkedLoading maxClusterRadius={50} disableClusteringAtZoom={15}>
           {paradas.map((p, i) => (
