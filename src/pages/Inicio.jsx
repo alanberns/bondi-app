@@ -49,6 +49,11 @@ export default function Inicio() {
                 icon: <FaMap className="text-4xl mb-2 text-white" />,
                 path: '/mapaparadas',
               },
+              {
+                label: 'Unidades en mapa',
+                icon: <FaMap className="text-4xl mb-2 text-white" />,
+                path: '/unidadesmapa',
+              },
             ].map(({ label, icon, path }, index) => {
               // 🎨 Si el label es "Arribos MOQSA", usamos verde
               const baseClasses =
