@@ -8,6 +8,7 @@ function Recorridos() {
     const [seleccionados, setSeleccionados] = useState([]);
     const [mostrarRecorridos, setMostrarRecorridos] = useState(false);
     const [lineaAbierta, setLineaAbierta] = useState(null);
+    const [mostrarLineas, setMostrarLineas] = useState(true);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -50,44 +51,66 @@ function Recorridos() {
                 </button>
             </div>
 
-            <div className="w-full max-w-md space-y-4">
-                {Object.entries(lineas).map(([linea, ramales]) => (
-                    <div key={linea} className="bg-white rounded-lg shadow-md">
-                        {/* Botón horizontal estilo arribos */}
+            {/* Botón para mostrar/ocultar lista de líneas */}
+
+                {/* Contenedor relativo para el botón flotante y la lista de líneas */}
+                <div className="w-full max-w-md relative">
+                    {/* Botón flotante solo dentro del contenedor */}
+                    <div className="sticky top-0 z-10 pt-2">
                         <button
-                            onClick={() => setLineaAbierta(lineaAbierta === linea ? null : linea)}
-                            className="w-full flex items-center justify-between bg-[#FFC421] hover:bg-[#FFD95E] text-white rounded-lg shadow-md transition duration-300 px-4 py-3"
+                            onClick={() => setMostrarLineas(prev => !prev)}
+                            className="w-full flex items-center justify-between text-xl font-semibold text-gray-700 bg-white border border-gray-200 shadow-lg rounded-full px-6 py-3 hover:bg-gray-100 transition duration-300"
+                            style={{ minWidth: '220px' }}
                         >
-                            <span className="text-base font-semibold">Línea {linea}</span>
-                            <FaChevronDown
-                                className={`transform transition-transform duration-300 ${lineaAbierta === linea ? "rotate-180" : "rotate-0"}`}
-                            />
+                            {mostrarLineas ? 'Ocultar lista de líneas' : 'Mostrar lista de líneas'}
+                            <span className={`transform transition-transform duration-300 ${mostrarLineas ? 'rotate-180' : 'rotate-0'}`}>
+                                <FaChevronDown />
+                            </span>
                         </button>
+                    </div>
+                    <div className="pt-4">
+                        {mostrarLineas && (
+                            <div className="space-y-4">
+                                {Object.entries(lineas).map(([linea, ramales]) => (
+                                    <div key={linea} className="bg-white rounded-lg shadow-md">
+                                        {/* Botón horizontal estilo arribos */}
+                                        <button
+                                            onClick={() => setLineaAbierta(lineaAbierta === linea ? null : linea)}
+                                            className="w-full flex items-center justify-between bg-[#FFC421] hover:bg-[#FFD95E] text-white rounded-lg shadow-md transition duration-300 px-4 py-3"
+                                        >
+                                            <span className="text-base font-semibold">Línea {linea}</span>
+                                            <FaChevronDown
+                                                className={`transform transition-transform duration-300 ${lineaAbierta === linea ? "rotate-180" : "rotate-0"}`}
+                                            />
+                                        </button>
 
-                        {/* Dropdown de ramales */}
-                        {lineaAbierta === linea && (
-                            <div className="p-4 space-y-2">
-                                <div className="flex gap-4 mb-2">
-                                </div>
+                                        {/* Dropdown de ramales */}
+                                        {lineaAbierta === linea && (
+                                            <div className="p-4 space-y-2">
+                                                <div className="flex gap-4 mb-2">
+                                                </div>
 
-                                {ramales.map((r, i) => (
-                                    <label
-                                        key={i}
-                                        className="flex items-center space-x-2 bg-white px-4 py-2 rounded-lg shadow border border-gray-300"
-                                    >
-                                        <input
-                                            type="checkbox"
-                                            checked={seleccionados.includes(r)}
-                                            onChange={() => toggleSeleccion(r)}
-                                        />
-                                        <span className="text-gray-800">{r.ramal}</span>
-                                    </label>
+                                                {ramales.map((r, i) => (
+                                                    <label
+                                                        key={i}
+                                                        className="flex items-center space-x-2 bg-white px-4 py-2 rounded-lg shadow border border-gray-300"
+                                                    >
+                                                        <input
+                                                            type="checkbox"
+                                                            checked={seleccionados.includes(r)}
+                                                            onChange={() => toggleSeleccion(r)}
+                                                        />
+                                                        <span className="text-gray-800">{r.ramal}</span>
+                                                    </label>
+                                                ))}
+                                            </div>
+                                        )}
+                                    </div>
                                 ))}
                             </div>
                         )}
                     </div>
-                ))}
-            </div>
+                </div>
 
             {/* Botón mostrar recorridos */}
             <button
