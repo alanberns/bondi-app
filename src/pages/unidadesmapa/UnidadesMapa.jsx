@@ -16,7 +16,7 @@ function UnidadesMapa() {
   const [mostrarMapa, setMostrarMapa] = useState(false);
   const navigate = useNavigate();
 
-  // 1. Cargar unidades.json
+  // 1. Cargar unidades.json: INFORMACION DE LINEAS, RAMALES Y PARADAS
   useEffect(() => {
     fetch("/unidades.json")
       .then(res => res.json())
@@ -30,7 +30,7 @@ function UnidadesMapa() {
     return acc;
   }, {});
 
-  // 3. Al seleccionar ramales, obtener paradas únicas
+  // 3. Al seleccionar ramales, obtener paradas únicas -> EVITAR DUPLICADOS
   useEffect(() => {
     console.log("Ramales seleccionados:", seleccionados);
     if (seleccionados.length === 0) {
@@ -60,7 +60,8 @@ function UnidadesMapa() {
       .then(res => res.json())
       .then(data => {
         console.log("Respuesta API:", data);
-        // 5. Filtrar por ramal y eliminar duplicados por coche
+        // 5. Filtrar por ramal -> QUITAR LOS QUE NO FUERON SELECCIONADOS
+        // y eliminar coches duplicados por identificadorCoche
         const ramalDescs = seleccionados.map(r => r.ramal);
         const filtrados = (data.arribos || []).filter(a =>
           ramalDescs.some(desc => a.descripcionBandera?.includes(desc) || a.descripcionLinea?.includes(desc))
@@ -71,10 +72,31 @@ function UnidadesMapa() {
           new Map(filtrados.map(c => [c.identificadorCoche, c])).values()
         );
         console.log("Colectivos únicos:", unicos);
-        setColectivos(unicos);
+        // 6. Consultar parada filtro y comparar colectivos
+        // Obtener paradaFiltro de los ramales seleccionados
+        const paradaFiltro = seleccionados.find(r => r.paradaFiltro)?.paradaFiltro;
+        if (paradaFiltro) {
+          console.log("ParadaFiltro:", paradaFiltro);
+          const url = `https://back-api-bondi.vercel.app/api/unionplatense?idParada=${paradaFiltro}`;
+          fetch(url)
+            .then(res => res.json())
+            .then(data => {
+              const colectivosEnFiltro = (data.arribos || []).map(c => c.identificadorCoche);
+              console.log("Colectivos en paradaFiltro:", colectivosEnFiltro);
+              //aca vamos a matchear "colectivosEnFiltro" con "unicos" y los que coincidan les añadimos la propiedad "sinComienzo: true"
+              const unicosConFiltro = unicos.map(c => ({
+                ...c,
+                sinComienzo: colectivosEnFiltro.includes(c.identificadorCoche)
+              }));
+              setColectivos(unicosConFiltro);
+            })
+        } else {
+          setColectivos(unicos);
+        }
       })
       .finally(() => setLoading(false));
   }, [paradasUnicas, seleccionados, mostrarMapa]);
+
 
   const toggleSeleccion = (ramal) => {
     setSeleccionados(prev =>
@@ -134,7 +156,7 @@ function UnidadesMapa() {
                             checked={seleccionados.includes(r)}
                             onChange={() => toggleSeleccion(r)}
                           />
-                          <span className="text-gray-800">{r.ramal}</span>
+                          <span className="text-gray-800">{r.descripcion}</span>
                         </label>
                       ))}
                     </div>
@@ -168,8 +190,23 @@ function UnidadesMapa() {
                 position={[parseFloat(c.latitud), parseFloat(c.longitud)]}
                 icon={busIcon}
               >
-                <Tooltip direction="top" offset={[0, -20]} permanent className="bus-tooltip">
-                  <div style={{ minWidth: 90, fontSize: 10, textAlign: 'center' }}>
+                <Tooltip 
+                  direction="top" 
+                  offset={[0, -20]} 
+                  permanent 
+                  className="bus-tooltip"
+                >
+                  <div 
+                    style={{ 
+                      minWidth: 90, 
+                      fontSize: 10, 
+                      textAlign: 'center',
+                      backgroundColor: '#fff',
+                      padding: '4px',
+                      borderRadius: '4px',
+                      fontWeight: 'normal'
+                    }}
+                  >
                     <strong style={{
                       display: 'inline-block',
                       maxWidth: 180,
@@ -188,6 +225,14 @@ function UnidadesMapa() {
                     <span style={{ color: '#888' }}>
                       Coche: {c.identificadorCoche}
                     </span>
+                    {!c.sinComienzo && (
+                      <>
+                        <br />
+                        <span style={{ color: '#FF0000', fontWeight: 'bold' }}>
+                          Sin comienzo
+                        </span>
+                      </>
+                    )}
                   </div>
                 </Tooltip>
               </Marker>

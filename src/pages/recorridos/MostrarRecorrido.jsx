@@ -1,8 +1,19 @@
 
 import { MapContainer, TileLayer, Polyline, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
+import L from "leaflet";
 import { useState } from "react";
 import { FaChevronDown } from "react-icons/fa";
+
+// Configurar el ícono por defecto de Leaflet
+const defaultIcon = L.icon({
+  iconUrl: "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-icon.png",
+  shadowUrl: "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-shadow.png",
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shadowSize: [41, 41]
+});
 
 
 function MostrarRecorrido({ recorridos }) {
@@ -41,7 +52,7 @@ function MostrarRecorrido({ recorridos }) {
           <span className="ml-2 text-gray-800 text-base">Mostrar paradas</span>
         </label>
       </div>
-      <MapContainer center={[-34.92, -57.95]} zoom={13} style={{ height: "60vh", width: "100%" }}>
+      <MapContainer center={[-34.803382, -58.203121]} zoom={11} style={{ height: "80vh", width: "100%" }}>
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution="&copy; OpenStreetMap contributors"
@@ -63,6 +74,7 @@ function MostrarRecorrido({ recorridos }) {
               <Marker
                 key={"parada-" + i + "-" + j}
                 position={[parseFloat(parada.latitud), parseFloat(parada.longitud)]}
+                icon={defaultIcon}
               >
                 <Popup>
                   <strong>Parada:</strong> {parada.identificador}<br />
