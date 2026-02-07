@@ -31,6 +31,146 @@
     "linea": "159",
     "ramal": "159 1",
     "descripcion": "1 - HACIA CORREO",
-    "paradas": ["MO-01346","MO-01328","MO-01071","MO-01088","MO-00394","MO-00352"]
+    "paradas": ["MO-01346","MO-01568","MO-01105","MO-01488","MO-00721","MO-00541","MO-00038"]
+  },
+  {
+    "linea": "159",
+    "ramal": "159 1",
+    "descripcion": "1 - HACIA C.VARELA",
+    "paradas": ["MO-00153","MO-01187","MO-00645","MO-00780","MO-01174","MO-01477","MO-01154","MO-01528"]
+  },
+  {
+    "linea": "159",
+    "ramal": "159 2",
+    "descripcion": "2 - HACIA CORREO",
+    "paradas": ["MO-01188","MO-01257","MO-01105","MO-01328","MO-01346"]
+  },
+  {
+    "linea": "159",
+    "ramal": "159 2",
+    "descripcion": "2 - HACIA BERAZATEGUI",
+    "paradas": ["MO-00038","MO-00001","MO-00974","MO-01448","MO-00581","MO-01429","MO-01395","MO-01279"]
+  },
+  {
+    "linea": "159",
+    "ramal": "159 BG",
+    "descripcion": "BG - HACIA CORREO",
+    "paradas": ["MO-01347","MO-01390"]
+  },
+  {
+    "linea": "159",
+    "ramal": "159 BG",
+    "descripcion": "BG- HACIA EST. BERNAL",
+    "paradas": ["MO-01417","MO-01395"]
+  },
+  {
+    "linea": "159",
+    "ramal": "159 L AZUL",
+    "descripcion": "L AZUL - HACIA CORREO",
+    "paradas": ["MO-01346","MO-01066","MO-00721","MO-00038","MO-00105"]
+  },
+  {
+    "linea": "159",
+    "ramal": "159 L AZUL",
+    "descripcion": "L AZUL - HACIA CORREO",
+    "paradas": ["MO-01346","MO-01066","MO-00721","MO-00038","MO-00105"]
+  },
+  {
+    "linea": "159",
+    "ramal": "159 L ROJA",
+    "descripcion": "L ROJA (P.NUEVO) - HACIA CORREO",
+    "paradas": ["MO-00292","MO-00331","MO-00106","MO-00373","MO-01048","MO-01067","MO-01324","MO-01347"]
+  },
+  {
+    "linea": "159",
+    "ramal": "159 L ROJA",
+    "descripcion": "L ROJA (ALP) - HACIA CORREO",
+    "paradas": ["MO-00979","MO-01048","MO-01067","MO-01324","MO-01347"]
+  },
+  {
+    "linea": "159",
+    "ramal": "159 L ROJA",
+    "descripcion": "L ROJA - HACIA ALPARGATAS",
+    "paradas": ["MO-01305","MO-01538","MO-01555","MO-00317"]
+  },
+  {
+    "linea": "159",
+    "ramal": "159 L ROJA",
+    "descripcion": "L ROJA - HACIA P. NUEVO",
+    "paradas": ["MO-01305","MO-01538","MO-01555","MO-01188","MO-00800","MO-00296","MO-01145"]
+  },
+  {
+    "linea": "159 SEMI",
+    "ramal": "SSBEGUI",
+    "descripcion": "BEGUI - HACIA CORREO",
+    "paradas": ["MO-01347","MO-01250"]
+  },
+  {
+    "linea": "159 SEMI",
+    "ramal": "SSBEGUI",
+    "descripcion": "BEGUI - HACIA BERAZATEGUI",
+    "paradas": ["MO-01251","MO-01641","MO-01188","MO-01247"]
+  },
+  {
+    "linea": "159 SEMI",
+    "ramal": "SSHUDSON",
+    "descripcion": "HUDSON - HACIA CORREO",
+    "paradas": ["MO-01347","MO-01135","MO-00139"]
+  },
+  {
+    "linea": "159 SEMI",
+    "ramal": "SSHUDSON",
+    "descripcion": "HUDSON - HACIA HUDSON",
+    "paradas": ["MO-01492","MO-01136","MO-01247"]
+  },
+  {
+    "linea": "159 SEMI",
+    "ramal": "SSMARITIMO",
+    "descripcion": "MARITIMO - HACIA CORREO",
+    "paradas": ["MO-01346","MO-01277","MO-01041","MO-00659"]
+  },
+  {
+    "linea": "159 SEMI",
+    "ramal": "SSMARITIMO",
+    "descripcion": "MARITIMO - HACIA MARITIMO",
+    "paradas": ["MO-00113","MO-01555","MO-01397","MO-01247"]
+  },
+  {
+    "linea": "159 SEMI",
+    "ramal": "SSURQUIZA",
+    "descripcion": "URQUIZA - HACIA CORREO",
+    "paradas": ["MO-01347","MO-01386","MO-01075"]
+  },
+  {
+    "linea": "159 SEMI",
+    "ramal": "SSURQUIZA",
+    "descripcion": "URQUIZA - HACIA EST. QUILMES",
+    "paradas": ["MO-00560","MO-01391","MO-01247"]
+  },
+  {
+    "linea": "414",
+    "ramal": "414_LA PLATA",
+    "descripcion": "HACIA LA PLATA",
+    "paradas": ["LP8501"]
+  },
+  {
+    "linea": "414",
+    "ramal": "414_FLORENCIO VARELA",
+    "descripcion": "HACIA F. VARELA",
+    "paradas": ["LP8614"]
+  },
+  {
+    "linea": "418",
+    "ramal": "A LA PLATA (PZA MORENO)",
+    "descripcion": "HACIA LA PLATA",
+    "paradas": ["LP12000","LP18244"],
+    "paradaFiltro": ["LP01530"]
+  },
+  {
+    "linea": "418",
+    "ramal": "A BERAZATEGUI",
+    "descripcion": "HACIA BERAZATEGUI",
+    "paradas": ["LP18181","LP18122"],
+    "paradaFiltro": ["LP18183"]
   }
 ]

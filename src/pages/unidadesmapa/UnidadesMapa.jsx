@@ -86,7 +86,7 @@ function UnidadesMapa() {
               //aca vamos a matchear "colectivosEnFiltro" con "unicos" y los que coincidan les añadimos la propiedad "sinComienzo: true"
               const unicosConFiltro = unicos.map(c => ({
                 ...c,
-                sinComienzo: colectivosEnFiltro.includes(c.identificadorCoche)
+                sinComienzo: !colectivosEnFiltro.includes(c.identificadorCoche)
               }));
               setColectivos(unicosConFiltro);
             })
@@ -225,7 +225,7 @@ function UnidadesMapa() {
                     <span style={{ color: '#888' }}>
                       Coche: {c.identificadorCoche}
                     </span>
-                    {!c.sinComienzo && (
+                    {c.sinComienzo && (
                       <>
                         <br />
                         <span style={{ color: '#FF0000', fontWeight: 'bold' }}>
