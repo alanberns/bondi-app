@@ -84,7 +84,7 @@ export default function GraficoDiferenciaMinutos({ servicios }) {
                 legend: { position: "right" },
                 tooltip: {
                   callbacks: {
-                    label: (ctx) => `${ctx.raw.y} min`,
+                    label: (ctx) => `${ctx.raw.y.toFixed(1)} min`, 
                   },
                 },
               },
@@ -107,7 +107,7 @@ export default function GraficoDiferenciaMinutos({ servicios }) {
                 y: {
                   title: { display: true, text: "Diferencia de minutos" },
                   beginAtZero: true,
-                  reverse: true, // 👈 ahora la escala está invertida
+                  reverse: true, 
                 },
               },
             }}
