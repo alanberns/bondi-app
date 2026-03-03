@@ -51,7 +51,7 @@ export default function HorariosArribos() {
         />
         <button
           onClick={handleEnviar}
-          className="bg-yellow-400 hover:bg-yellow-500 text-white px-4 py-2 rounded"
+          className="bg-[#FFC421] hover:bg-[#FFD95E] text-white font-semibold py-2 px-6 rounded-lg shadow flex items-center gap-2 transition duration-300"
         >
           Enviar
         </button>

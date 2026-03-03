@@ -5,6 +5,7 @@ import {
   FaFlagCheckered,
   FaCity,
   FaTree,
+  FaSearch,
 } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 
@@ -36,6 +37,11 @@ export default function HorariosProgramados() {
       label: 'Plaza Italia',
       icon: <FaCity className="text-4xl mb-2 text-white" />,
       path: '/programados/italia',
+    },
+    {
+      label: 'Buscar parada',
+      icon: <FaSearch className="text-4xl mb-2 text-white" />,
+      path: '/programados/parada',
     },
   ];
 

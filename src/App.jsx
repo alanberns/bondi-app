@@ -9,6 +9,7 @@ import HorariosLaPlata from './pages/programados/HorariosLaPlata';
 import HorariosLlegada from './pages/programados/HorariosLlegada';
 import HorariosPzaVE from './pages/programados/HorariosPzaVE';
 import HorariosPzaItalia from './pages/programados/HorariosPzaItalia';
+import HorariosParada from './pages/programados/HorariosParada';
 
 import HorariosRegistrados from './pages/registrados/HorariosRegistrados';
 import HorariosLaPlataReg from './pages/registrados/HorariosLaPlataReg';
@@ -41,6 +42,7 @@ const App = () => {
           <Route path="/programados/llegadaCasa" element={<HorariosLlegada />} />
           <Route path="/programados/plazave" element={<HorariosPzaVE />} />
           <Route path="/programados/italia" element={<HorariosPzaItalia />} />
+          <Route path="/programados/parada" element={<HorariosParada />} />
 
           <Route path="/registrados" element={<HorariosRegistrados />} />
           <Route path="/registrados/casa" element={<HorariosCasaReg />} />
