@@ -84,7 +84,7 @@ export default function GraficoDiferenciaMinutos({ servicios }) {
                 legend: { position: "right" },
                 tooltip: {
                   callbacks: {
-                    label: (ctx) => `${ctx.raw.y.toFixed(1)} min`, 
+                    label: (ctx) => `${ctx.raw.y.toFixed(0)} min`, 
                   },
                 },
               },

@@ -64,19 +64,19 @@ export default function HorariosParada() {
           🚌 Horarios desde {idParada || "..."} 
         </h1>
 
-        <div className="flex gap-2 mb-6 w-full max-w-md mx-auto">
+        <div className="flex flex-col sm:flex-row gap-2 mb-6 w-full max-w-md mx-auto">
           <input
             type="text"
             placeholder="Ingrese código de parada"
             value={idParada}
             onChange={(e) => setIdParada(e.target.value)}
-            className="flex-1 border rounded px-3 py-2"
+            className="w-full border rounded px-3 py-2"
           />
 
           <select
             value={idLinea}
             onChange={(e) => setidLinea(e.target.value)}
-            className="flex-1 border rounded px-3 py-2"
+            className="w-full border rounded px-3 py-2"
           >
             <option value="">Seleccione línea</option>
             <option value="281">273</option>
