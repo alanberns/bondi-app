@@ -9,6 +9,9 @@ import { useHorariosApi } from "../../hooks/useHorariosApi";
 import { dentroDelRango } from "../../utils/filtros";
 import CantidadServicios from "../../components/CantidadServicios";
 import GraficoTiempoPromedio from "../../components/graficos/GraficoTiempoPromedio";
+import GraficoServiciosPorHora from "../../components/graficos/GraficoServiciosPorHora";
+import GraficoServiciosPorRamal from "../../components/graficos/GraficoServiciosPorRamal";
+import GraficoDiferenciaMinutos from "../../components/graficos/GraficoDiferenciaMinutos";
 
 export default function HorariosPzaVEReg() {
   const { horarios, loading, seleccionados, setSeleccionados } =
@@ -69,6 +72,9 @@ export default function HorariosPzaVEReg() {
         <CantidadServicios servicios={horariosFiltrados}></CantidadServicios>
         <ListaHorarios horarios={horariosFiltrados} />
         <GraficoTiempoPromedio servicios={horariosFiltrados} />
+        <GraficoServiciosPorHora servicios={horariosFiltrados} />
+        <GraficoServiciosPorRamal servicios={horariosFiltrados} />
+        <GraficoDiferenciaMinutos servicios={horariosFiltrados} />
       </div>
     </div>
   );

@@ -11,6 +11,9 @@ import { dentroDelRango } from "../../utils/filtros";
 import { obtenerDiaActual } from "../../utils/fecha";
 import GraficoTiempoPromedio from "../../components/graficos/GraficoTiempoPromedio";
 import CantidadServicios from "../../components/CantidadServicios";
+import GraficoServiciosPorHora from "../../components/graficos/GraficoServiciosPorHora";
+import GraficoServiciosPorRamal from "../../components/graficos/GraficoServiciosPorRamal";
+import GraficoDiferenciaMinutos from "../../components/graficos/GraficoDiferenciaMinutos";
         
 
 export default function HorariosLlegadaReg() {
@@ -72,6 +75,9 @@ export default function HorariosLlegadaReg() {
         <CantidadServicios servicios={horariosFiltrados}></CantidadServicios>
         <ListaHorarios horarios={horariosFiltrados} />
         <GraficoTiempoPromedio servicios={horariosFiltrados} />
+        <GraficoServiciosPorHora servicios={horariosFiltrados} />
+        <GraficoServiciosPorRamal servicios={horariosFiltrados} />
+        <GraficoDiferenciaMinutos servicios={horariosFiltrados} />
       </div>
     </div>
   );

@@ -9,6 +9,9 @@ import { useHorariosApi } from "../../hooks/useHorariosApi";
 import { dentroDelRango } from "../../utils/filtros";
 import CantidadServicios from "../../components/CantidadServicios";
 import GraficoTiempoPromedio from "../../components/graficos/GraficoTiempoPromedio";
+import GraficoServiciosPorHora from "../../components/graficos/GraficoServiciosPorHora";
+import GraficoServiciosPorRamal from "../../components/graficos/GraficoServiciosPorRamal";
+import GraficoDiferenciaMinutos from "../../components/graficos/GraficoDiferenciaMinutos";
 
 export default function HorariosParada() {
   const [idParada, setIdParada] = useState("");
@@ -116,6 +119,9 @@ export default function HorariosParada() {
             <CantidadServicios servicios={horariosFiltrados} />
             <ListaHorarios horarios={horariosFiltrados} />
             <GraficoTiempoPromedio servicios={horariosFiltrados} />
+            <GraficoServiciosPorHora servicios={horariosFiltrados} />
+            <GraficoServiciosPorRamal servicios={horariosFiltrados} />
+            <GraficoDiferenciaMinutos servicios={horariosFiltrados} />
           </>
         )}
       </div>
