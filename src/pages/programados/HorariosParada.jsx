@@ -63,6 +63,7 @@ export default function HorariosParada() {
         <h1 className="text-3xl font-bold text-gray-800 mb-6 text-center">
           🚌 Horarios desde {idParada || "..."} 
         </h1>
+        <BotonesNavegacion rutaAtras={'/programados'}/>
 
         <div className="flex flex-col sm:flex-row gap-2 mb-6 w-full max-w-md mx-auto">
           <input
