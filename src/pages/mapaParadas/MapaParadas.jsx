@@ -89,7 +89,18 @@ export default function MapaParadas() {
     Papa.parse("/paradas.csv", {
       download: true,
       header: true,
-      complete: (result) => setParadas(result.data),
+      complete: (result) => {
+        console.log("Errores del CSV:", result.errors);
+      
+        console.log(
+          "Filas sin identificador:",
+          result.data
+            .map((p, i) => ({ fila: i + 2, ...p }))
+            .filter(p => p.identificador == null)
+        );
+      
+        setParadas(result.data);
+      },
     });
   }, []);
 
